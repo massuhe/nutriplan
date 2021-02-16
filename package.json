@@ -1,0 +1,14 @@
+{
+  "name": "nutriplan",
+  "version": "1.0.0",
+  "description": "Organize your meals and easily access to its recipes",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "author": "Esteban Massuh",
+  "license": "ISC",
+  "devDependencies": {
+    "snowpack": "^3.0.11"
+  }
+}
