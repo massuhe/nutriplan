@@ -1,0 +1,23 @@
+[
+  {
+    "date": "2021-02-27T23:33:16.428Z",
+    "meals": [
+      {
+        "type": "breakfast",
+        "value": "Vaso de leche + panqueque de vainilla + miel + frutas a elección"
+      },
+      {
+        "type": "lunch",
+        "value": "Milanesa de soja con queso y rodaja de tomate arriba + ensalada de repollo y zanahoria"
+      },
+      {
+        "type": "snack",
+        "value": "Yogurt + 2 rodajas de pan integral con queso untable + semillas + manzana"
+      },
+      {
+        "type": "dinner",
+        "value": "Omelette (2 huevos) de espinaca con queso, tomate y arvejas + ensalada de zanahoria, choclo y tomate"
+      }
+    ]
+  }
+]
