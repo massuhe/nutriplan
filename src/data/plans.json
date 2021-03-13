@@ -1,6 +1,6 @@
 [
   {
-    "date": "2021-02-27T23:33:16.428Z",
+    "date": "2021-03-13T23:33:16.428Z",
     "meals": [
       {
         "type": "breakfast",
@@ -17,6 +17,174 @@
       {
         "type": "dinner",
         "value": "Omelette (2 huevos) de espinaca con queso, tomate y arvejas + ensalada de zanahoria, choclo y tomate"
+      }
+    ]
+  },
+  {
+    "date": "2021-03-14T23:33:16.428Z",
+    "meals": [
+      {
+        "type": "breakfast",
+        "value": "Vaso de leche + panqueque de vainilla + miel + frutas a elección"
+      },
+      {
+        "type": "lunch",
+        "value": "Milanesa de soja con queso y rodaja de tomate arriba + ensalada de repollo y zanahoria"
+      },
+      {
+        "type": "snack",
+        "value": "Yogurt + 2 rodajas de pan integral con queso untable + semillas + manzana"
+      },
+      {
+        "type": "dinner",
+        "value": "Omelette (2 huevos) de espinaca con queso, tomate y arvejas + ensalada de zanahoria, choclo y tomate"
+      }
+    ]
+  },
+  {
+    "date": "2021-03-15T23:33:16.428Z",
+    "meals": [
+      {
+        "type": "breakfast",
+        "value": "Vaso de leche + panqueque de vainilla + miel + frutas a elección"
+      },
+      {
+        "type": "lunch",
+        "value": "Milanesa de soja con queso y rodaja de tomate arriba + ensalada de repollo y zanahoria"
+      },
+      {
+        "type": "snack",
+        "value": "Yogurt + 2 rodajas de pan integral con queso untable + semillas + manzana"
+      },
+      {
+        "type": "dinner",
+        "value": "Omelette (2 huevos) de espinaca con queso, tomate y arvejas + ensalada de zanahoria, choclo y tomate"
+      }
+    ]
+  },
+  {
+    "date": "2021-03-16T23:33:16.428Z",
+    "meals": [
+      {
+        "type": "breakfast",
+        "value": "Vaso de leche + panqueque de vainilla + miel + frutas a elección"
+      },
+      {
+        "type": "lunch",
+        "value": "Milanesa de soja con queso y rodaja de tomate arriba + ensalada de repollo y zanahoria"
+      },
+      {
+        "type": "snack",
+        "value": "Yogurt + 2 rodajas de pan integral con queso untable + semillas + manzana"
+      },
+      {
+        "type": "dinner",
+        "value": "Omelette (2 huevos) de espinaca con queso, tomate y arvejas + ensalada de zanahoria, choclo y tomate"
+      }
+    ]
+  },
+  {
+    "date": "2021-03-17T23:33:16.428Z",
+    "meals": [
+      {
+        "type": "breakfast",
+        "value": "Vaso de leche + panqueque de vainilla + miel + frutas a elección"
+      },
+      {
+        "type": "lunch",
+        "value": "Milanesa de soja con queso y rodaja de tomate arriba + ensalada de repollo y zanahoria"
+      },
+      {
+        "type": "snack",
+        "value": "Yogurt + 2 rodajas de pan integral con queso untable + semillas + manzana"
+      },
+      {
+        "type": "dinner",
+        "value": "Omelette (2 huevos) de espinaca con queso, tomate y arvejas + ensalada de zanahoria, choclo y tomate"
+      }
+    ]
+  },
+  {
+    "date": "2021-03-18T23:33:16.428Z",
+    "meals": [
+      {
+        "type": "breakfast",
+        "value": "DAY_4_MEALS_BREAKFAST_VALUE"
+      },
+      {
+        "type": "lunch",
+        "value": "DAY_4_MEALS_LUNCH_VALUE"
+      },
+      {
+        "type": "snack",
+        "value": "DAY_4_MEALS_SNACK_VALUE"
+      },
+      {
+        "type": "dinner",
+        "value": "DAY_4_MEALS_DINNER_VALUE"
+      }
+    ]
+  },
+  {
+    "date": "2021-03-19T23:33:16.428Z",
+    "meals": [
+      {
+        "type": "breakfast",
+        "value": "DAY_5_MEALS_BREAKFAST_VALUE"
+      },
+      {
+        "type": "lunch",
+        "value": "DAY_5_MEALS_LUNCH_VALUE"
+      },
+      {
+        "type": "snack",
+        "value": "DAY_5_MEALS_SNACK_VALUE"
+      },
+      {
+        "type": "dinner",
+        "value": "DAY_5_MEALS_DINNER_VALUE"
+      }
+    ]
+  },
+  {
+    "date": "2021-03-20T23:33:16.428Z",
+    "meals": [
+      {
+        "type": "breakfast",
+        "value": "DAY_6_MEALS_BREAKFAST_VALUE"
+      },
+      {
+        "type": "lunch",
+        "value": "DAY_6_MEALS_LUNCH_VALUE"
+      },
+      {
+        "type": "snack",
+        "value": "DAY_6_MEALS_SNACK_VALUE"
+      },
+      {
+        "type": "dinner",
+        "value": "DAY_6_MEALS_DINNER_VALUE"
+      }
+    ]
+  },
+  {
+    "date": "2021-03-21T23:33:16.428Z",
+    "meals": [
+      {
+        "type": "breakfast",
+        "value": "DAY_7_MEALS_BREAKFAST_VALUE"
+      },
+      {
+        "type": "lunch",
+        "value": "DAY_7_MEALS_LUNCH_VALUE"
+      },
+      {
+        "type": "snack",
+        "value": "DAY_7_MEALS_SNACK_VALUE"
+      },
+      {
+        "type": "dinner",
+        "value": "DAY_7_MEALS_DINNER_VALUE"
       }
     ]
   }
