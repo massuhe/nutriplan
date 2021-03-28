@@ -1,20 +1,16 @@
-import React, { useRef } from 'react';
+import React, { ReactElement } from 'react';
+
+interface IPlanDayProps {
+  planDay: any; // TODO: Replace with PlanDay type
+}
 
 const toDisplayDate = (date) => {
   return new Date(date).toDateString();
 };
 
-const PlanDay = ({ planDay, offset }) => {
+const PlanDay = ({ planDay }: IPlanDayProps): ReactElement => {
   return (
-    <article
-      className="bg-green-50 py-3 px-5 flex flex-col rounded-lg shadow-2xl my-10"
-      style={{
-        minWidth: '18.68%',
-        width: '18.68%',
-        marginLeft: '1.1%',
-        transform: `translateX(calc(var(--offset) * 105.3533%)`,
-      }}
-    >
+    <article className="bg-green-50 py-3 px-5 rounded-lg shadow-2xl h-full">
       <h3 className="text-center font-serif text-lg text-green-500 mb-5">
         {toDisplayDate(planDay.date)}
       </h3>
