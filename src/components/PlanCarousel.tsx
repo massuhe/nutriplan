@@ -1,80 +1,96 @@
 import React, { useEffect, useRef, ReactElement } from 'react';
-import type { IPlanDay } from 'src/types.js';
-import useObjectState from '../hooks/useObjectState.js';
 import CarouselItem from './CarouselItem.js';
+import useObjectState from '../hooks/useObjectState.js';
+import { nextTick, transitionEnd } from '../lib/async.js';
 
 interface IPlanCarouselProps<T> {
   children: (item: T) => ReactElement;
-  plan: Array<T>;
+  allItems: Array<T>;
   keyProp: string;
   initialIndex: number;
 }
 
+type AnyObject = { [index: string]: any };
+
 const getPlansToRender = (
-  plan: IPlanDay[],
+  allItems: AnyObject[],
   idx: number,
-  transitionState: string
-): { offset: number; planDays: IPlanDay[]; removeTransition: boolean } => {
+  isTransitionInProgress: boolean,
+  transitionDirection: string
+): { offset: number; items: AnyObject[] } => {
   const initialOffset = Math.max(2 - idx, 0);
 
-  const isTransitionInProgress = transitionState.includes('transitioning');
-
   // Right arrow
-  if (transitionState.includes('right')) {
+  if (transitionDirection === 'right') {
     const rightLimit = Math.max(Math.max(idx, initialOffset) - 2, 0);
     const leftLimit = rightLimit + 6 - initialOffset;
 
     return {
-      planDays: plan.slice(rightLimit, leftLimit),
+      items: allItems.slice(rightLimit, leftLimit),
       offset: isTransitionInProgress ? initialOffset - 1 : initialOffset,
-      removeTransition: !isTransitionInProgress,
     };
   }
 
   // Left arrow
-  if (transitionState.includes('left')) {
+  if (transitionDirection === 'left') {
     const rightLimit = Math.max(idx - 3, 0);
     const leftLimit = idx + 3;
     const baseOffset = Math.max(2 - idx, -1);
 
     return {
-      planDays: plan.slice(rightLimit, leftLimit),
+      items: allItems.slice(rightLimit, leftLimit),
       offset: isTransitionInProgress ? baseOffset + 1 : baseOffset,
-      removeTransition: !isTransitionInProgress,
     };
   }
 
   // Idle
   return {
     offset: initialOffset,
-    planDays: plan.slice(
+    items: allItems.slice(
       Math.max(Math.max(idx, initialOffset) - 2, 0),
       idx + 3
     ),
-    removeTransition: true,
   };
 };
 
 const PlanCarousel = ({
   children,
-  plan,
+  allItems,
   keyProp,
   initialIndex,
-}: IPlanCarouselProps<any>): ReactElement => {
-  const [{ idx, transitionState }, setState] = useObjectState(() => ({
+}: IPlanCarouselProps<AnyObject>): ReactElement => {
+  const [
+    { idx, transitionStage, transitionDirection },
+    setState,
+  ] = useObjectState(() => ({
     idx: initialIndex,
-    transitionState: 'idle',
+    transitionStage: 'idle',
+    transitionDirection: null,
   }));
-  const refIsTransitioning = useRef(false);
 
-  const { offset, planDays, removeTransition } = getPlansToRender(
-    plan,
+  const refIsTransitioning = useRef(false);
+  const refCarouselItem = useRef<HTMLDivElement | null>(null);
+
+  const isTransitionInProgress = transitionStage === 'transitioning';
+
+  const { offset, items } = getPlansToRender(
+    allItems,
     idx,
-    transitionState
+    isTransitionInProgress,
+    transitionDirection
   );
 
+  const isItemActive = (item: AnyObject): boolean => {
+    const addToIndex = isTransitionInProgress
+      ? { right: 1, left: -1 }[transitionDirection as string] || 0
+      : 0;
+    const indexActive = items.indexOf(allItems[idx]);
+
+    return items[indexActive + addToIndex] === item;
+  };
+
   useEffect(() => {
-    function moveActivePlanIndexByArrow({ code }: { code: string }) {
+    async function moveActivePlanIndexByArrow({ code }: { code: string }) {
       if (refIsTransitioning.current) return;
 
       const direction = { ArrowRight: 'right', ArrowLeft: 'left' }[code];
@@ -82,107 +98,54 @@ const PlanCarousel = ({
       if (
         !direction ||
         (direction === 'left' && idx === 0) ||
-        (direction === 'right' && idx === plan.length - 1)
+        (direction === 'right' && idx === allItems.length - 1)
       )
         return;
 
       refIsTransitioning.current = true;
 
-      // stage 1: add new element at the end
-      setState({ transitionState: `preparing-transition-${direction}` });
-      // stage 2: change offset to -1 to transition the new element in
-      setTimeout(() =>
-        setState({ transitionState: `transitioning-${direction}` })
-      );
-      // stage 3: wait for transition end and remove element transitioned out and change offset back to 0
-      setTimeout(() => {
-        setState({
-          transitionState: 'idle',
-          idx: idx + ({ right: 1, left: -1 }[direction] || 0),
-          direction: 0,
-        });
-        refIsTransitioning.current = false;
-      }, 250);
+      // stage 1: add new element at the end and wait for next event loop tick.
+      setState({
+        transitionStage: `preparing`,
+        transitionDirection: direction,
+      });
+      await nextTick();
+      // stage 2: change offset to -1 to transition the new element in.
+      setState({
+        transitionStage: `transitioning`,
+        transitionDirection: direction,
+      });
+      // stage 3: wait for transition end and remove element transitioned out and change offset back to 0.
+      if (refCarouselItem.current) {
+        await transitionEnd(refCarouselItem.current);
+      }
+
+      setState({
+        direction: 0,
+        idx: idx + ({ right: 1, left: -1 }[direction as string] || 0),
+        transitionStage: 'idle',
+        transitionDirection: null,
+      });
+
+      await nextTick();
+      refIsTransitioning.current = false;
     }
     document.addEventListener('keydown', moveActivePlanIndexByArrow);
     return () =>
       document.removeEventListener('keydown', moveActivePlanIndexByArrow);
-  }, [transitionState]);
-
-  // let offset = Math.max(2 - idx, 0);
-  // let planDays = plan.slice(Math.max(Math.max(idx, offset) - 2, 0), idx + 3);
-  // let removeTransition = true;
-
-  // // Right arrow
-
-  // if (stage === 1 && direction === 1) {
-  //   planDays = plan.slice(
-  //     Math.max(Math.max(idx, offset) - 2, 0),
-  //     Math.max(Math.max(idx, offset) - 2, 0) + 6 - offset
-  //   );
-  // }
-
-  // if (stage === 2 && direction === 1) {
-  //   planDays = plan.slice(
-  //     Math.max(Math.max(idx, offset) - 2, 0),
-  //     Math.max(Math.max(idx, offset) - 2, 0) + 6 - offset
-  //   );
-  //   offset = offset - 1;
-  //   removeTransition = false;
-  // }
-
-  // // Left arrow
-
-  // if (stage === 1 && direction === -1) {
-  //   planDays = plan.slice(Math.max(idx - 3, 0), idx + 3);
-  //   offset = Math.max(2 - idx, -1);
-  // }
-
-  // if (stage === 2 && direction === -1) {
-  //   planDays = plan.slice(Math.max(idx - 3, 0), idx + 3);
-  //   offset = Math.max(2 - idx, -1) + 1;
-  //   removeTransition = false;
-  // }
-
-  // useEffect(() => {
-  //   function moveActivePlanIndexByArrow({ code }: { code: string }) {
-  //     if (refIsTransitioning.current) return;
-
-  //     const direction = { ArrowRight: 1, ArrowLeft: -1 }[code];
-
-  //     if (
-  //       !direction ||
-  //       (direction === -1 && idx === 0) ||
-  //       (direction === 1 && idx === plan.length - 1)
-  //     )
-  //       return;
-
-  //     refIsTransitioning.current = true;
-
-  //     // stage 1: add new element at the end
-  //     setTransition({ stage: 1, idx, direction });
-  //     // stage 2: change offset to -1 to transition the new element in
-  //     setTimeout(() => setTransition({ stage: 2, idx, direction }));
-  //     // stage 3: wait for transition end and remove element transitioned out and change offset back to 0
-  //     setTimeout(() => {
-  //       setTransition({ stage: 0, idx: idx + direction, direction: 0 });
-  //       refIsTransitioning.current = false;
-  //     }, 250);
-  //   }
-  //   document.addEventListener('keydown', moveActivePlanIndexByArrow);
-  //   return () =>
-  //     document.removeEventListener('keydown', moveActivePlanIndexByArrow);
-  // }, [stage]);
+  }, [transitionStage]);
 
   return (
     <section
       className="flex flex-1 overflow-hidden h-full"
       style={{ '--offset': offset } as React.CSSProperties}
     >
-      {planDays.map((item: Partial<{ [index: string]: any }>) => (
+      {items.map((item, i) => (
         <CarouselItem
+          {...(i === 0 && { ref: refCarouselItem })}
           key={String(item[keyProp])}
-          removeTransition={removeTransition}
+          isTransitionInProgress={isTransitionInProgress}
+          active={isItemActive(item)}
         >
           {children(item)}
         </CarouselItem>

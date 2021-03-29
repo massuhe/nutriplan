@@ -26,7 +26,7 @@ const Plan = ({ plan, loading }: IPlanProps): ReactElement => {
   return (
     <div className="h-full">
       <PlanCarousel
-        plan={plan}
+        allItems={plan}
         keyProp="date"
         initialIndex={plan.findIndex(findTodaysPlanIndex)}
       >

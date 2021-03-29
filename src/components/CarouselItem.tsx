@@ -1,19 +1,30 @@
-import React from 'react';
+import React, { ForwardRefRenderFunction, ReactElement } from 'react';
 
-const CarouselItem = ({ children, removeTransition }) => {
-  return (
-    <div
-      className="flex flex-col"
-      style={{
-        minWidth: '20%',
-        width: '20%',
-        transform: `translateX(calc(var(--offset) * 100%)`,
-        ...(!removeTransition && { transition: 'transform 0.2s ease' }),
-      }}
-    >
-      {children}
-    </div>
-  );
-};
+interface ICarouselItemProps {
+  active: boolean;
+  children: ReactElement;
+  isTransitionInProgress: boolean;
+}
 
-export default CarouselItem;
+const CarouselItem: ForwardRefRenderFunction<
+  HTMLDivElement | null,
+  ICarouselItemProps
+> = ({ children, isTransitionInProgress, active }: ICarouselItemProps, ref) => (
+  <div
+    ref={ref}
+    className="flex flex-col"
+    style={{
+      minWidth: '20%',
+      padding: active ? '40px 10px 40px 10px' : '80px 15px 80px 15px',
+      transform: `translateX(calc(var(--offset) * 100%)`,
+      transition: `${isTransitionInProgress ? 'all 0.5s ease-in-out' : ''}`,
+      width: '20%',
+    }}
+  >
+    {children}
+  </div>
+);
+
+export default React.forwardRef<HTMLDivElement | null, ICarouselItemProps>(
+  CarouselItem
+);

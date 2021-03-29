@@ -1,13 +1,13 @@
 import { useState } from 'react';
 
-type anyObject = { [index: string]: any };
+type AnyObject = { [index: string]: any };
 
 const useObjectState = (
-  initialState: () => anyObject | anyObject
-): [anyObject, (newState: anyObject) => void] => {
-  const [state, setState] = useState<anyObject>(initialState);
+  initialState: () => AnyObject | AnyObject
+): [AnyObject, (newState: AnyObject) => void] => {
+  const [state, setState] = useState<AnyObject>(initialState);
 
-  const setObjectState = (newState: anyObject) => {
+  const setObjectState = (newState: AnyObject) => {
     setState({ ...state, ...newState });
   };
 
