@@ -17,7 +17,7 @@ const CarouselItem: ForwardRefRenderFunction<
       minWidth: '20%',
       padding: active ? '40px 10px 40px 10px' : '80px 15px 80px 15px',
       transform: `translateX(calc(var(--offset) * 100%)`,
-      transition: `${isTransitionInProgress ? 'all 0.5s ease-in-out' : ''}`,
+      transition: `${isTransitionInProgress ? 'all 0.35s ease-in-out' : ''}`,
       width: '20%',
     }}
   >

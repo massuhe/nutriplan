@@ -1,17 +1,17 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
-type AnyObject = { [index: string]: any };
+const useObjectState = <T>(
+  initialState: () => T | T
+): [T, (newState: Partial<T>) => void, T | null] => {
+  const [state, setState] = useState<T>(initialState);
+  const refPrevState = useRef<T | null>(null);
 
-const useObjectState = (
-  initialState: () => AnyObject | AnyObject
-): [AnyObject, (newState: AnyObject) => void] => {
-  const [state, setState] = useState<AnyObject>(initialState);
-
-  const setObjectState = (newState: AnyObject) => {
+  const setObjectState = (newState: Partial<T>) => {
+    refPrevState.current = state;
     setState({ ...state, ...newState });
   };
 
-  return [state, setObjectState];
+  return [state, setObjectState, refPrevState.current];
 };
 
 export default useObjectState;

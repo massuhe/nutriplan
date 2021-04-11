@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useState } from 'react';
 import PlanCarousel from './PlanCarousel.js';
 import PlanDay from './PlanDay.js';
 import PlanSkeletons from './PlanSkeletons.js';
@@ -23,12 +23,19 @@ interface IPlanProps {
 const Plan = ({ plan, loading }: IPlanProps): ReactElement => {
   if (loading) return <PlanSkeletons />;
 
+  const [index, setIndex] = useState<number>(() =>
+    plan.findIndex(findTodaysPlanIndex)
+  );
+
+  const handleIndexChange = (newIndex: number) => setIndex(newIndex);
+
   return (
     <div className="h-full">
       <PlanCarousel
         allItems={plan}
         keyProp="date"
-        initialIndex={plan.findIndex(findTodaysPlanIndex)}
+        index={index}
+        onIndexChange={handleIndexChange}
       >
         {(planDay) => <PlanDay planDay={planDay} />}
       </PlanCarousel>
