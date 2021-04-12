@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, ReactElement } from 'react';
 import Header from './components/Header.js';
 import Plan from './components/Plan.js';
 import PlanActions from './components/PlanActions.js';
@@ -6,7 +6,7 @@ import planMock from './data/plans.json';
 
 const useMock = true;
 
-function App() {
+const App = (): ReactElement => {
   const [plan, setPlan] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -26,6 +26,6 @@ function App() {
       </main>
     </>
   );
-}
+};
 
 export default App;

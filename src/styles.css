@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Remove outline for non-keyboard :focus */
+*:focus:not(:focus-visible) {
+  outline: none;
+}

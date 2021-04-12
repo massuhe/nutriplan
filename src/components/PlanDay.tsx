@@ -1,10 +1,11 @@
 import React, { ReactElement } from 'react';
+import type { IPlanDay } from '../types';
 
 interface IPlanDayProps {
-  planDay: any; // TODO: Replace with PlanDay type
+  planDay: IPlanDay;
 }
 
-const toDisplayDate = (date) => {
+const toDisplayDate = (date: string) => {
   return new Date(date).toDateString();
 };
 

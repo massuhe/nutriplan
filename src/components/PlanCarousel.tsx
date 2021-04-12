@@ -98,8 +98,6 @@ const PlanCarousel = ({
   };
 
   async function moveActivePlan(direction: string) {
-    if (refIsTransitioning.current) return;
-
     if (
       !direction ||
       (direction === 'left' && idx === 0) ||
@@ -122,7 +120,7 @@ const PlanCarousel = ({
     });
     // stage 3: wait for transition end and remove element transitioned out and change offset back to 0.
     if (refCarouselItem.current) {
-      await transitionEnd(refCarouselItem.current);
+      await transitionEnd(refCarouselItem.current, 500);
     }
 
     setState({
@@ -154,20 +152,29 @@ const PlanCarousel = ({
     moveActivePlan(direction);
   }, [index]);
 
+  const handleIndexChange = (n: number | KeyboardEvent) => {
+    if (refIsTransitioning.current) return;
+
+    const amount =
+      typeof n === 'number' ? n : { ArrowLeft: -1, ArrowRight: 1 }[n.code] || 0;
+    if (amount === 0) return;
+
+    onIndexChange(idx + amount);
+  };
+
   useEffect(() => {
-    function handleIndexChange(e: KeyboardEvent) {
-      if (refIsTransitioning.current) return;
-      onIndexChange(idx + ({ ArrowLeft: -1, ArrowRight: 1 }[e.code] || 0));
-    }
     document.addEventListener('keydown', handleIndexChange);
     return () => document.removeEventListener('keydown', handleIndexChange);
   }, [idx]);
 
   return (
     <section
-      className="flex flex-1 overflow-hidden h-full"
+      className="flex flex-1 overflow-hidden h-full relative"
       style={{ '--offset': offset } as React.CSSProperties}
     >
+      {idx !== 0 && (
+        <CarouselArrow direction="left" onMove={handleIndexChange} />
+      )}
       {items.map((item, i) => (
         <CarouselItem
           {...(i === 0 && { ref: refCarouselItem })}
@@ -178,8 +185,40 @@ const PlanCarousel = ({
           {children(item)}
         </CarouselItem>
       ))}
+      {idx !== allItems.length - 1 && (
+        <CarouselArrow direction="right" onMove={handleIndexChange} />
+      )}
     </section>
   );
 };
+
+interface ICarouselArrowProps {
+  direction: string;
+  onMove: (n: number) => void;
+}
+
+function CarouselArrow({
+  direction,
+  onMove,
+}: ICarouselArrowProps): ReactElement {
+  const { char, move, extraClass } = {
+    left: { char: '<', move: -1, extraClass: '' },
+    right: { char: '>', move: 1, extraClass: 'right-0' },
+  }[direction] || { char: '', move: 0, extraClass: '' };
+
+  const handleClick = () => onMove(move);
+
+  return (
+    <button
+      onClick={handleClick}
+      className={`absolute duration-200 flex h-full hover:opacity-100 focus:opacity-100 items-center opacity-10 transition-opacity z-10 text-white p-7 text-7xl ${extraClass}`}
+      style={{
+        background: `radial-gradient(ellipse at center ${direction}, #005237d4 0, #10b98100 70%)`,
+      }}
+    >
+      {char}
+    </button>
+  );
+}
 
 export default PlanCarousel;
