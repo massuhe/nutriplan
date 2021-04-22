@@ -1,4 +1,5 @@
 import React, { useEffect, useLayoutEffect, useRef, ReactElement } from 'react';
+import CarouselArrow from './CarouselArrow.js';
 import CarouselItem from './CarouselItem.js';
 import useObjectState from '../hooks/useObjectState.js';
 import { nextTick, transitionEnd } from '../lib/async.js';
@@ -191,34 +192,5 @@ const PlanCarousel = ({
     </section>
   );
 };
-
-interface ICarouselArrowProps {
-  direction: string;
-  onMove: (n: number) => void;
-}
-
-function CarouselArrow({
-  direction,
-  onMove,
-}: ICarouselArrowProps): ReactElement {
-  const { char, move, extraClass } = {
-    left: { char: '<', move: -1, extraClass: '' },
-    right: { char: '>', move: 1, extraClass: 'right-0' },
-  }[direction] || { char: '', move: 0, extraClass: '' };
-
-  const handleClick = () => onMove(move);
-
-  return (
-    <button
-      onClick={handleClick}
-      className={`absolute duration-200 flex h-full hover:opacity-100 focus:opacity-100 items-center opacity-10 transition-opacity z-10 text-white p-7 text-7xl ${extraClass}`}
-      style={{
-        background: `radial-gradient(ellipse at center ${direction}, #005237d4 0, #10b98100 70%)`,
-      }}
-    >
-      {char}
-    </button>
-  );
-}
 
 export default PlanCarousel;

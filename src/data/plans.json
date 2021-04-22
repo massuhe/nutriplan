@@ -1,191 +1,403 @@
-[
-  {
-    "date": "2021-03-13T23:33:16.428Z",
-    "meals": [
-      {
-        "type": "breakfast",
-        "value": "Vaso de leche + panqueque de vainilla + miel + frutas a elección"
-      },
-      {
-        "type": "lunch",
-        "value": "Milanesa de soja con queso y rodaja de tomate arriba + ensalada de repollo y zanahoria"
-      },
-      {
-        "type": "snack",
-        "value": "Yogurt + 2 rodajas de pan integral con queso untable + semillas + manzana"
-      },
-      {
-        "type": "dinner",
-        "value": "Omelette (2 huevos) de espinaca con queso, tomate y arvejas + ensalada de zanahoria, choclo y tomate"
-      }
-    ]
-  },
-  {
-    "date": "2021-03-14T23:33:16.428Z",
-    "meals": [
-      {
-        "type": "breakfast",
-        "value": "Vaso de leche + panqueque de vainilla + miel + frutas a elección"
-      },
-      {
-        "type": "lunch",
-        "value": "Milanesa de soja con queso y rodaja de tomate arriba + ensalada de repollo y zanahoria"
-      },
-      {
-        "type": "snack",
-        "value": "Yogurt + 2 rodajas de pan integral con queso untable + semillas + manzana"
-      },
-      {
-        "type": "dinner",
-        "value": "Omelette (2 huevos) de espinaca con queso, tomate y arvejas + ensalada de zanahoria, choclo y tomate"
-      }
-    ]
-  },
-  {
-    "date": "2021-03-15T23:33:16.428Z",
-    "meals": [
-      {
-        "type": "breakfast",
-        "value": "Vaso de leche + panqueque de vainilla + miel + frutas a elección"
-      },
-      {
-        "type": "lunch",
-        "value": "Milanesa de soja con queso y rodaja de tomate arriba + ensalada de repollo y zanahoria"
-      },
-      {
-        "type": "snack",
-        "value": "Yogurt + 2 rodajas de pan integral con queso untable + semillas + manzana"
-      },
-      {
-        "type": "dinner",
-        "value": "Omelette (2 huevos) de espinaca con queso, tomate y arvejas + ensalada de zanahoria, choclo y tomate"
-      }
-    ]
-  },
-  {
-    "date": "2021-03-16T23:33:16.428Z",
-    "meals": [
-      {
-        "type": "breakfast",
-        "value": "Vaso de leche + panqueque de vainilla + miel + frutas a elección"
-      },
-      {
-        "type": "lunch",
-        "value": "Milanesa de soja con queso y rodaja de tomate arriba + ensalada de repollo y zanahoria"
-      },
-      {
-        "type": "snack",
-        "value": "Yogurt + 2 rodajas de pan integral con queso untable + semillas + manzana"
-      },
-      {
-        "type": "dinner",
-        "value": "Omelette (2 huevos) de espinaca con queso, tomate y arvejas + ensalada de zanahoria, choclo y tomate"
-      }
-    ]
-  },
-  {
-    "date": "2021-03-17T23:33:16.428Z",
-    "meals": [
-      {
-        "type": "breakfast",
-        "value": "Vaso de leche + panqueque de vainilla + miel + frutas a elección"
-      },
-      {
-        "type": "lunch",
-        "value": "Milanesa de soja con queso y rodaja de tomate arriba + ensalada de repollo y zanahoria"
-      },
-      {
-        "type": "snack",
-        "value": "Yogurt + 2 rodajas de pan integral con queso untable + semillas + manzana"
-      },
-      {
-        "type": "dinner",
-        "value": "Omelette (2 huevos) de espinaca con queso, tomate y arvejas + ensalada de zanahoria, choclo y tomate"
-      }
-    ]
-  },
-  {
-    "date": "2021-03-18T23:33:16.428Z",
-    "meals": [
-      {
-        "type": "breakfast",
-        "value": "DAY_4_MEALS_BREAKFAST_VALUE"
-      },
-      {
-        "type": "lunch",
-        "value": "DAY_4_MEALS_LUNCH_VALUE"
-      },
-      {
-        "type": "snack",
-        "value": "DAY_4_MEALS_SNACK_VALUE"
-      },
-      {
-        "type": "dinner",
-        "value": "DAY_4_MEALS_DINNER_VALUE"
-      }
-    ]
-  },
-  {
-    "date": "2021-03-19T23:33:16.428Z",
-    "meals": [
-      {
-        "type": "breakfast",
-        "value": "DAY_5_MEALS_BREAKFAST_VALUE"
-      },
-      {
-        "type": "lunch",
-        "value": "DAY_5_MEALS_LUNCH_VALUE"
-      },
-      {
-        "type": "snack",
-        "value": "DAY_5_MEALS_SNACK_VALUE"
-      },
-      {
-        "type": "dinner",
-        "value": "DAY_5_MEALS_DINNER_VALUE"
-      }
-    ]
-  },
-  {
-    "date": "2021-03-20T23:33:16.428Z",
-    "meals": [
-      {
-        "type": "breakfast",
-        "value": "DAY_6_MEALS_BREAKFAST_VALUE"
-      },
-      {
-        "type": "lunch",
-        "value": "DAY_6_MEALS_LUNCH_VALUE"
-      },
-      {
-        "type": "snack",
-        "value": "DAY_6_MEALS_SNACK_VALUE"
-      },
-      {
-        "type": "dinner",
-        "value": "DAY_6_MEALS_DINNER_VALUE"
-      }
-    ]
-  },
-  {
-    "date": "2021-03-21T23:33:16.428Z",
-    "meals": [
-      {
-        "type": "breakfast",
-        "value": "DAY_7_MEALS_BREAKFAST_VALUE"
-      },
-      {
-        "type": "lunch",
-        "value": "DAY_7_MEALS_LUNCH_VALUE"
-      },
-      {
-        "type": "snack",
-        "value": "DAY_7_MEALS_SNACK_VALUE"
-      },
-      {
-        "type": "dinner",
-        "value": "DAY_7_MEALS_DINNER_VALUE"
-      }
-    ]
-  }
-]
+[{
+  "name": "Plan alimentario 4",
+  "startDate": "2021-03-13T23:33:16.428Z",
+  "days": [
+    {
+      "date": "2021-03-13T23:33:16.428Z",
+      "meals": [
+        {
+          "type": "breakfast",
+          "value": "Vaso de leche + 2 @tostada-francesa con frutos rojos + miel + banana"
+        },
+        {
+          "type": "lunch",
+          "value": "@hamburguesa-espinaca-calabaza + ensalada de tomate, zanahoria y choclo"
+        },
+        {
+          "type": "snack",
+          "value": "Vaso de leche + @pancakes-integrales + miel + kiwi"
+        },
+        {
+          "type": "dinner",
+          "value": "Filet de pollo con 2 rodajas de queso y cebollas rebosadas + ensalada de tomate y zanahoria"
+        }
+      ]
+    },
+    {
+      "date": "2021-03-14T23:33:16.428Z",
+      "meals": [
+        {
+          "type": "breakfast",
+          "value": "Vaso de leche + 2 pan integral con queso untable + @huevo-revuelto + manzana"
+        },
+        {
+          "type": "lunch",
+          "value": "Carne al horno con verduras"
+        },
+        {
+          "type": "snack",
+          "value": "Vaso de leche + @panqueque-avena + arándanos + naranja"
+        },
+        {
+          "type": "dinner",
+          "value": "2 porciones de @tarta-calabaza-zapallo-masa-avena + ensalada de lechuga y tomate "
+        }
+      ]
+    },
+    {
+      "date": "2021-03-15T23:33:16.428Z",
+      "meals": [
+        {
+          "type": "breakfast",
+          "value": "Vaso de leche + panqueque de vainilla + miel + frutas a elección"
+        },
+        {
+          "type": "lunch",
+          "value": "Milanesa de soja con queso y rodaja de tomate arriba + ensalada de repollo y zanahoria"
+        },
+        {
+          "type": "snack",
+          "value": "Yogurt + 2 rodajas de pan integral con queso untable + semillas + manzana"
+        },
+        {
+          "type": "dinner",
+          "value": "Omelette (2 huevos) de espinaca con queso, tomate y arvejas + ensalada de zanahoria, choclo y tomate"
+        }
+      ]
+    },
+    {
+      "date": "2021-03-16T23:33:16.428Z",
+      "meals": [
+        {
+          "type": "breakfast",
+          "value": "Vaso de leche + @panqueque-avena + miel + frutas a elección "
+        },
+        {
+          "type": "lunch",
+          "value": "Milanesa de soja con queso y rodaja de tomate arriba + ensalada de repollo y zanahoria"
+        },
+        {
+          "type": "snack",
+          "value": "Yogur + @galletitas-avena-naranja-almendras "
+        },
+        {
+          "type": "dinner",
+          "value": "@omelette-espinaca con queso, tomate y arvejas + ensalada de zanahoria, choclo y tomate"
+        }
+      ]
+    },
+    {
+      "date": "2021-03-17T23:33:16.428Z",
+      "meals": [
+        {
+          "type": "breakfast",
+          "value": "Yogur + 1 banana + 1 kiwi + frutos secos "
+        },
+        {
+          "type": "lunch",
+          "value": "Filet de pescado + verduras al horno"
+        },
+        {
+          "type": "snack",
+          "value": "Vaso de leche + 2 pan integral con queso untable + semillas + mandarina"
+        },
+        {
+          "type": "dinner",
+          "value": "@risotto-champinones"
+        }
+      ]
+    },
+    {
+      "date": "2021-03-18T23:33:16.428Z",
+      "meals": [
+        {
+          "type": "breakfast",
+          "value": "Vaso de leche + 2 pan integral con queso untable + semillas + frutas "
+        },
+        {
+          "type": "lunch",
+          "value": "Fideos con @salsa-zanahoria + nueces"
+        },
+        {
+          "type": "snack",
+          "value": "Vaso de leche + @panqueque-avena + frutos secos + frutas"
+        },
+        {
+          "type": "dinner",
+          "value": "@hamburguesa-lentejas + @papa-rellena-espinaca-acelga + 1 huevo "
+        }
+      ]
+    },
+    {
+      "date": "2021-03-19T23:33:16.428Z",
+      "meals": [
+        {
+          "type": "breakfast",
+          "value": "@chia-pudding"
+        },
+        {
+          "type": "lunch",
+          "value": "@hamburguesas-garbanzos + @canastitas-verduras"
+        },
+        {
+          "type": "snack",
+          "value": "Yogur + 2 pan integral + palta + 1 rodaja de jamón + fruta"
+        },
+        {
+          "type": "dinner",
+          "value": "2 porciones de Pizza casera"
+        }
+      ]
+    },
+    {
+      "date": "2021-03-20T23:33:16.428Z",
+      "meals": [
+        {
+          "type": "breakfast",
+          "value": "Vaso de leche + @panqueque-avena + ½ banana + 10 almendras"
+        },
+        {
+          "type": "lunch",
+          "value": "Wok de pollo con verduras"
+        },
+        {
+          "type": "snack",
+          "value": "Merienda a elección"
+        },
+        {
+          "type": "dinner",
+          "value": "@roll-arroz-queso-envuelto-hojas-espinaca"
+        }
+      ]
+    }
+  ],
+  "recipes": [
+    {
+      "slug": "tostada-francesa",
+      "title": "Tostada francesa",
+      "ingredients": [
+        "1 rodaja de pan blanco o integral",
+        "1 huevo",
+        "1 chorrito de leche o agua",
+        "1 cdita de esencia de vainilla",
+        "opcional: pizca de canela"
+      ],
+      "process": "Batir los huevos, la leche o agua y vainilla. Cortar la rodaja de pan a la mitad y mejorarla bien de los dos lados. Déjalas unos minutos así absorbe bien el líquido. Cocinar en sarten caliente hasta que estén tostadas." },
+    {
+      "slug": "hamburguesa-espinaca-calabaza",
+      "title": "Hamburguesa de espinaca y calabaza",
+      "ingredients": [
+        "1 calabaza",
+        "1 paquete de espinaca",
+        "1 cebolla y 1 ajo",
+        "1 huevo",
+        "Avena extra fina o pan rallado",
+        "Queso rallado",
+        "Condimentos a gusto."
+      ],
+      "process": "Cortar la calabaza a la mitad y cocinarla al horno. Retirar, hacer un puré y dejar escurrir. Hervir las hojas de espinaca y una vez listas picarlas. Saltear la cebolla en una sartén junto con el ajo picado. En un bowl mezclar todo y agregar 1 huevo batido, pan rallado o avena y el queso rallado hasta formar una masa homogénea. Darle forma a las hamburguesas. Colocarlas en una placa para horno previamente engrasada y cocinar vuelta y vuelta."
+    },
+    {
+      "slug": "pancakes-integrales",
+      "title": "Pancakes integral",
+      "ingredients": [
+        "½ banana",
+        "2cdas harina integral",
+        "1cdita de esencia de vainilla",
+        "1 huevo",
+        "1 clara"
+      ],
+      "process": "incorporar todos los ingredientes en un bowl, batir bien. Y volcarlo a una sarten vuelta y vuelta."
+    },
+    {
+      "slug": "huevo-revuelto",
+      "title": "",
+      "ingredients": [
+        "1 huevo",
+        "1 clara",
+        "chorrito de leche"
+      ],
+      "process": "batí el huevo y la clara, agrega el chorrito de leche y verter sobre una sartén bien caliente de teflón o con apenas de aceite."
+    },
+    {
+      "slug": "panqueque-avena",
+      "title": "Panqueque de avena",
+      "ingredients": [
+        "1 huevo",
+        "2 cucharadas soperas de avena",
+        "1 cucharadita de edulcorante",
+        "pizca de polvo para hornear"
+      ],
+      "process": "Mezclar todos los ingredientes, llevar a la sarten vuelta y vuelta."
+    },
+    {
+      "slug": "tarta-calabaza-zapallo-masa-avena",
+      "title": "Tarta de calabaza y zapallo con masa de avena",
+      "ingredients": [
+        {
+          "group": "Relleno",
+          "ingredients": [
+            "1/2 calabaza",
+            "1/2 zapallo",
+            "1 cebolla",
+            "2 huevos",
+            "3 cdas de queso untable",
+            "Sal y condimentos a gusto"
+          ]
+        },
+        {
+          "group": "Masa",
+          "ingredients": [
+            "10 cdas de leche descremada",
+            "10 cdas de aceite",
+            "250 g de harina de avena",
+            "Semillas"
+          ]
+        }
+      ],
+      "process": "Hervir el zapallo y la calabaza al dente. Dejar escurrir. Saltear la cebolla. En un bowl incorporar la cebolla, el puré de zapallo y calabaza, huevos y queso. Condimentar y mezclar. Agregar todo a la tartera y llevar al horno moderado durante 40’. Para la masa tan solo mezclar los ingredientes hasta formar una masa homogénea fácil de amasar y colocar en la tartera."
+    },
+    {
+      "slug": "galletitas-avena-naranja-almendras",
+      "title": "",
+      "ingredients": [
+        "150g de avena",
+        "60g de miel",
+        "1 naranja",
+        "1 huevo",
+        "75ml de aceite de oliva",
+        "20g de almendras picadas",
+        "1 cdita de polvo de hornear",
+        "1 cdita de sal"
+      ],
+      "process": "En un bowl echar la avena, el polvo de hornear, las almendras picadas y la sal. Mezclar bien todo con una espátula. En un bowl aparte mezclar la ralladura de naranja, el jugo de naranja, el aceite de oliva, el huevo y la miel. Mezclar todos los ingredientes en un mismo bowl. Si ven que la masa está muy líquida, pueden agregarle un poco más de avena. Poner sobre una placa de horno un poquito de aceite en spray. Hacer bolitas con las manos y aplastar hasta formar un circulo plano. Si se quiere decorar con una almendra en el centro. Cocinar a horno moderado por 15 minutos o hasta que los bordes empiecen a dorarse un poco. Sacar del horno y enfriar."
+    },
+    {
+      "slug": "omelette-espinaca",
+      "title": "Omelette de espinaca",
+      "ingredients": [
+        "2 huevos",
+        "un puñado de espinaca cruda",
+        "condimentos a gusto"
+      ],
+      "process": "Licuar o procesar los ingredientes. Llevar la mezcla a una sarten caliente y cocinar vuelta y vuelta."
+    },
+    {
+      "slug": "risotto-champinones",
+      "title": "Risotto de champiñones",
+      "ingredients": [
+        "cebolla de verdeo",
+        "champiñones",
+        "arroz"
+      ],
+      "process": "Saltea la cebolla de verdeo con un chorrito de aceite y luego agrega los champiñones. Coloca el arroz en el salteado y agrégale agua o caldo de a poco hasta que este cocido el arroz."
+    },
+    {
+      "slug": "salsa-zanahoria",
+      "title": "Salsa de zanahoria",
+      "ingredients": [
+        "1 zanahoria",
+        "2 cdas de queso untable descremado",
+        "condimentos a gusto"
+      ],
+      "process": "En una olla agregar todos los ingredientes (la zanahoria rallada) y mezclar bien."
+    },
+    {
+      "slug": "panqueque-avena",
+      "title": "Panqueque de avena",
+      "ingredients": [
+        "1 huevo",
+        "2 cucharadas soperas de avena",
+        "1 cucharadita de edulcorante",
+        "pizca de polvo de hornear"
+      ],
+      "process": "Mezclar todos los ingredientes, llevar a la sarten vuelta y vuelta."
+    },
+    {
+      "slug": "hamburguesa-lentejas",
+      "title": "Hamburguesa de lentejas",
+      "ingredients": [
+        "500g de lentejas cocidas",
+        "2 huevos",
+        "perejil",
+        "1 taza de avena en hojuelas",
+        "condimentos a gusto"
+      ],
+      "process": "Hervir las lentejas, integrar en un bowl todos los ingredientes, hace unas bolitas y luego aplastar con una cuchara."
+    },
+    {
+      "slug": "papa-rellena-espinaca-acelga",
+      "title": "Papa relena con espinaca o acelga",
+      "ingredients": [
+        "1 papa chica",
+        "½ cebolla",
+        "½ paquete de espinaca",
+        "1 cucharada sopera de queso untable",
+        "Condimentos (Ajo en polvo, pimienta blanca/negra y sal)",
+        "Queso"
+      ],
+      "process": "Lavar muy bien las papas, cortar a la mitad y cocinar al horno moderado hasta que estén un poco blandas (lleva bastante tiempo 1 hora aprox). Saltear la cebolla y la espinaca. Retirar el centro de la papa y pisar. Mezclar el puré con la cebolla, espinaca y queso untable o rallado. Rellenar cada mitad, agregar queso y dar una última cocción en el horno."
+    },
+    {
+      "slug": "chia-pudding",
+      "title": "Chía pudding",
+      "ingredients": [
+        "150ml de leche",
+        "1 cda de cacao amargo",
+        "2 cdas de chia"
+      ],
+      "process": "Incorporar todos los ingredientes en un franco de mermelada mezclar y dejar en la heladera por 3 a 5hs. Luego sacar batir y agregar ½ banana + ½ manzana y un puñado de frutos secos."
+    },
+    {
+      "slug": "hamburguesas-garbanzos",
+      "title": "Hamburguesa de garbanzos",
+      "ingredients": [
+        "500g de garbanzos cocidas",
+        "2 huevos",
+        "perejil",
+        "1 taza de avena en hojuelas",
+        "condimentos a gusto"
+      ],
+      "process": "Hervir las lentejas, integrar en un bowl todos los ingredientes, hace unas bolitas y luego aplastar con una cuchara."
+    },
+    {
+      "slug": "canastitas-verduras",
+      "title": "Canastitas de verduras",
+      "ingredients": [
+        "1 zanahoria",
+        "1 zuchinni",
+        "1 tomate",
+        "1 cebolla",
+        "½ morrón",
+        "otros vegetales que te gusten",
+        "queso cremoso",
+        "6 tapas de empanadas"
+      ],
+      "process": "En una sarten incorporar los vegetales y dejarlos hasta que se ablanden. Luego condimentar a gusto y agregar a las tapas de empanadas y arriba incorporar una feta de queso. Al horno."
+    },
+    {
+      "slug": "panqueque-avena",
+      "title": "Panqueque de avena",
+      "ingredients": [
+        "1 huevo",
+        "2 cucharadas soperas de avena",
+        "1 cucharadita de edulcorante",
+        "pizca de polvo de hornear"
+      ],
+      "process": "Mezclar todos los ingredientes, llevar a la sarten vuelta y vuelta."
+    },
+    {
+      "slug": "roll-arroz-queso-envuelto-hojas-espinaca",
+      "title": "Roll de arroz y queso envueltos con hojas de espinaca",
+      "ingredients": [
+        "1 taza de arroz cocido",
+        "1 cebolla",
+        "Pimiento y perejil picado",
+        "1 clara",
+        "Hojas de espinaca",
+        "1 lata de tomate al natural"
+      ],
+      "process": "Cocinar el arroz al dente. Saltear la cebolla y el pimiento. Mezclar el arroz con el pimiento, cebolla perejil picado y la clara. Condimentar. Agregar la mezcla dentro de cada hoja de espinaca y envolver [pueden ayudarse de un palillo] y pueden agregar un cuadradito de queso cremoso o en barra. Preparar la salsa con ajo, cebolla y puré de tomate y colocar los rolls arriba de la salsa. Tapar la sartén y dejar cocinar unos minutos a fuego mínimo."
+    }
+  ]
+}]

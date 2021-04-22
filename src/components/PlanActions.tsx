@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 
-const PlanActions = () => (
+interface IPlanActions  {
+  planName: string;
+}
+
+const PlanActions = ({ planName }: IPlanActions): ReactElement => (
   <section className="inline-block p-6 bg-green-50 bg-opacity-30 relative rounded-br-xl shadow-xl text-green-50 self-start">
-    <h2 className="font-serif text-3xl">Plan alimentario 4</h2>
+    <h2 className="font-serif text-3xl">{planName}</h2>
     <ul className="flex text-sm">
       <li>
         <a href="#">Cambiar plan</a>
