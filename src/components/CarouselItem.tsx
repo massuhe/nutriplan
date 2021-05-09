@@ -1,4 +1,4 @@
-import React, { ForwardRefRenderFunction, ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 
 interface ICarouselItemProps {
   active: boolean;
@@ -6,25 +6,25 @@ interface ICarouselItemProps {
   isTransitionInProgress: boolean;
 }
 
-const CarouselItem: ForwardRefRenderFunction<
-  HTMLDivElement | null,
-  ICarouselItemProps
-> = ({ children, isTransitionInProgress, active }: ICarouselItemProps, ref) => (
+const CarouselItem = ({
+  children,
+  isTransitionInProgress,
+  active,
+}: ICarouselItemProps): ReactElement => (
   <div
-    ref={ref}
     className="flex flex-col"
     style={{
-      minWidth: '20%',
+      minWidth: 'calc(100%/var(--items-to-show))',
       padding: active ? '40px 10px 40px 10px' : '80px 15px 80px 15px',
       transform: `translateX(calc(var(--offset) * 100%)`,
-      transition: `${isTransitionInProgress ? 'all 0.35s ease-in-out' : ''}`,
-      width: '20%',
+      transition: isTransitionInProgress
+        ? 'all var(--transition-duration) ease'
+        : '',
+      width: 'calc(100%/var(--items-to-show))',
     }}
   >
     {children}
   </div>
 );
 
-export default React.forwardRef<HTMLDivElement | null, ICarouselItemProps>(
-  CarouselItem
-);
+export default CarouselItem;

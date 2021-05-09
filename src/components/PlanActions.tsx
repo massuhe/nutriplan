@@ -1,11 +1,11 @@
 import React, { ReactElement } from 'react';
 
-interface IPlanActions  {
+interface IPlanActions {
   planName: string;
 }
 
 const PlanActions = ({ planName }: IPlanActions): ReactElement => (
-  <section className="inline-block p-6 bg-green-50 bg-opacity-30 relative rounded-br-xl shadow-xl text-green-50 self-start">
+  <section className="w-full sm:w-auto inline-block p-6 bg-green-50 bg-opacity-30 relative sm:rounded-br-xl shadow-xl text-green-50 self-start">
     <h2 className="font-serif text-3xl">{planName}</h2>
     <ul className="flex text-sm">
       <li>

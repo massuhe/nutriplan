@@ -2,9 +2,13 @@ import React, { ReactElement } from 'react';
 import Avocado from './Avocado.js';
 
 const Header = (): ReactElement => (
-  <header className="px-6 py-12 bg-green-50 relative">
+  <header className="py-5 text-center bg-green-50 relative sm:px-6 sm:py-12 sm:text-left">
     <h1 className="font-serif font-bold text-5xl text-green-500">NutriPlan!</h1>
-    <Avocado className="absolute top-5 right-5" width="182.17" height="250" />
+    <Avocado
+      className="hidden absolute top-5 right-5 sm:block"
+      width="182.17"
+      height="250"
+    />
   </header>
 );
 

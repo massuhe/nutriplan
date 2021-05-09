@@ -1,5 +1,5 @@
 import React, { ReactElement, useState } from 'react';
-import PlanCarousel from './PlanCarousel.js';
+import Carousel from './Carousel.jsx';
 import PlanDay from './PlanDay.js';
 import PlanSkeletons from './PlanSkeletons.js';
 
@@ -31,14 +31,14 @@ const Plan = ({ plan, loading }: IPlanProps): ReactElement => {
 
   return (
     <div className="h-full">
-      <PlanCarousel
+      <Carousel
         allItems={plan}
         keyProp="date"
         index={index}
         onIndexChange={handleIndexChange}
       >
         {(planDay) => <PlanDay planDay={planDay} />}
-      </PlanCarousel>
+      </Carousel>
     </div>
   );
 };
