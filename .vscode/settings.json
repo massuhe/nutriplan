@@ -5,5 +5,8 @@
     "javascriptreact",
     "html",
     "typescriptreact"
-  ]
+  ],
+  "editor.fontFamily": "Victor Mono Medium",
+  "editor.tabSize": 2,
+  "editor.fontSize": 15
 }

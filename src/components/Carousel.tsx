@@ -8,22 +8,19 @@ interface IPlanCarouselProps<T> {
   allItems: Array<T>;
   children: (item: T) => ReactElement;
   index: number;
-  keyProp: string;
+  keyProp: keyof T;
   onIndexChange: (newIndex: number) => void;
-  transitionDuraton: number;
+  transitionDuraton?: number;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type AnyObject = { [index: string]: any };
-
-const Carousel = ({
+const Carousel = <T extends unknown>({
   allItems,
   children,
   index,
   keyProp,
   onIndexChange,
   transitionDuraton = 350,
-}: IPlanCarouselProps<AnyObject>): ReactElement => {
+}: IPlanCarouselProps<T>): ReactElement => {
   const [itemsToShow, setItemsToShow] = useState<number>(2);
 
   const {
@@ -34,7 +31,7 @@ const Carousel = ({
     isItemActive,
     hideLeftArrow,
     hideRightArrow,
-  } = useCarousel<AnyObject>({
+  } = useCarousel<T>({
     allItems,
     index,
     transitionDuraton,
@@ -60,7 +57,7 @@ const Carousel = ({
 
   useResponsiveCall([1, 2, 3, 3, 5], setItemsToShow);
 
-  const isItemsToShowEven = itemsToShow % 2 === 0;
+  const areItemsEven = itemsToShow % 2 === 0;
 
   return (
     <section
@@ -80,7 +77,7 @@ const Carousel = ({
         <CarouselItem
           key={String(item[keyProp])}
           isTransitionInProgress={isTransitionInProgress}
-          active={isItemsToShowEven || isItemActive(item)}
+          active={areItemsEven || isItemActive(item)}
         >
           {children(item)}
         </CarouselItem>

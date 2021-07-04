@@ -31,7 +31,7 @@ const Plan = ({ plan, loading }: IPlanProps): ReactElement => {
 
   return (
     <div className="h-full">
-      <Carousel
+      <Carousel<IPlanDay>
         allItems={plan}
         keyProp="date"
         index={index}

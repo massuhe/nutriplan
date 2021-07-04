@@ -1,5 +1,7 @@
+export type MealType = 'breakfast' | 'lunch' | 'snack' | 'dinner';
+
 export interface IMeal {
-  type: string;
+  type: MealType;
   value: string;
   editable?: boolean;
 }
