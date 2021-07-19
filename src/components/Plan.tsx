@@ -30,7 +30,7 @@ const Plan = ({ plan, loading }: IPlanProps): ReactElement => {
   const handleIndexChange = (newIndex: number) => setIndex(newIndex);
 
   return (
-    <div className="h-full">
+    <div className="h-full flex flex-col flex-1">
       <Carousel<IPlanDay>
         allItems={plan}
         keyProp="date"

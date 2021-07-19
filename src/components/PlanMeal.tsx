@@ -38,8 +38,11 @@ const RecipeMeal = ({ value }: { value: string }) => {
   // @TODO: Create new component <InlineButton /> that encapsulates accessibility.
   return (
     <a
-      href="#"
-      onClick={() => setActiveRecipe(recipe)}
+      href="/"
+      onClick={(e) => {
+        e.preventDefault();
+        setActiveRecipe(recipe);
+      }}
       className="hover:text-blue-600 text-blue-400"
       role="button"
     >
@@ -51,11 +54,12 @@ const RecipeMeal = ({ value }: { value: string }) => {
 const parseMealValue = (mealValue: string) => {
   return mealValue
     .split(rexMealWithRecipe)
+    .filter(Boolean)
     .map((value: string) =>
       value.startsWith('@') ? (
-        <RecipeMeal value={value.slice(1)} />
+        <RecipeMeal value={value.slice(1)} key={value} />
       ) : (
-        <span>{value}</span>
+        <span key={value}>{value}</span>
       )
     );
 };
@@ -63,8 +67,13 @@ const parseMealValue = (mealValue: string) => {
 const PlanMeal = ({ meal }: IPlanMealProps): ReactElement => {
   const { title, color } = MEAL_TYPE_CONFIG[meal.type];
   return (
-    <section className="flex-1">
-      <h4 className={`font-semibold text-${color}-500`}>{title}</h4>
+    <section className="my-2">
+      <div className="flex justify-between border-b-2">
+        <h4 className={`font-semibold text-${color}-500`}>{title}</h4>
+        <div>
+          <button>Foto</button>
+        </div>
+      </div>
       <p className="text-green-900">{parseMealValue(meal.value)}</p>
     </section>
   );

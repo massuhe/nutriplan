@@ -11,7 +11,7 @@ const toDisplayDate = (date: string) => {
 };
 
 const PlanDay = ({ planDay }: IPlanDayProps): ReactElement => (
-  <article className="bg-green-50 py-3 px-5 rounded-lg shadow-2xl h-full">
+  <article className="bg-green-50 py-3 px-5 rounded-lg shadow-2xl h-full flex flex-col">
     <h3 className="text-center font-serif text-lg text-green-500 mb-5">
       {toDisplayDate(planDay.date)}
     </h3>

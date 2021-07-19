@@ -21,7 +21,8 @@ function CarouselArrow({
       onClick={handleClick}
       className={`absolute duration-200 hidden sm:flex h-full hover:opacity-100 focus:opacity-100 items-center opacity-10 transition-opacity z-10 text-white text-7xl ${extraClass}`}
       style={{
-        background: `radial-gradient(ellipse at center ${direction}, #005237d4 0, #10b98100 70%)`,
+        background:
+          'linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0) 3%,rgba(0,0,0,0.1) 21%)',
       }}
     >
       {char}

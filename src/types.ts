@@ -13,10 +13,14 @@ export interface IPlan {
   days: IPlanDay[];
 }
 
+export type IngredientGroup = { group: string; ingredients: string[] };
+
+export type IIngredients = string | IngredientGroup;
+
 export interface IRecipe {
   slug: string;
   title: string;
-  ingredients: string[];
+  ingredients: IIngredients[];
   process: string;
 }
 

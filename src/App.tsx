@@ -27,11 +27,14 @@ const App = (): ReactElement => {
       setActiveRecipe={setActiveRecipe}
     >
       <Header />
-      <main className="h-full bg-green-500 flex flex-col">
+      <main className="flex-1 bg-green-500 flex flex-col">
         <PlanActions planName={plan.name} />
         <Plan plan={plan.days} loading={loading} />
       </main>
-      <RecipeModal recipe={activeRecipe} />
+      <RecipeModal
+        recipe={activeRecipe}
+        onClose={() => setActiveRecipe(undefined)}
+      />
     </RecipesContextWrapper>
   );
 };
