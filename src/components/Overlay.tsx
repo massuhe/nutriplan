@@ -56,7 +56,7 @@ function getOverlayTransitionStyles(
   };
 }
 
-// @TODO: Support more positions.
+// @TODO: Close with escape
 // @TODO: Trap focus.
 // @TODO: Make transition duration configurable via props.
 const Overlay = ({

@@ -1,6 +1,7 @@
 import React, { ReactElement, useContext } from 'react';
 import type { IMeal, MealType } from 'src/types';
 import { PlanContext } from './PlanContext';
+import PlanMealValue from './PlanMealValue';
 
 interface IPlanMealProps {
   meal: IMeal;
@@ -27,43 +28,6 @@ const MEAL_TYPE_CONFIG: {
   },
 };
 
-const rexMealWithRecipe = /(@[a-z-]+)/g;
-
-const RecipeMeal = ({ value }: { value: string }) => {
-  const { recipes, setActiveRecipe } = useContext(PlanContext);
-  const recipe = recipes.find((r) => r.slug === value);
-
-  if (!recipe) return <span>{value}</span>;
-
-  // @TODO: Create new component <InlineButton /> that encapsulates accessibility.
-  return (
-    <a
-      href="/"
-      onClick={(e) => {
-        e.preventDefault();
-        setActiveRecipe(recipe);
-      }}
-      className="hover:text-blue-600 text-blue-400"
-      role="button"
-    >
-      {recipe.title}
-    </a>
-  );
-};
-
-const parseMealValue = (mealValue: string) => {
-  return mealValue
-    .split(rexMealWithRecipe)
-    .filter(Boolean)
-    .map((value: string) =>
-      value.startsWith('@') ? (
-        <RecipeMeal value={value.slice(1)} key={value} />
-      ) : (
-        <span key={value}>{value}</span>
-      )
-    );
-};
-
 const PlanMeal = ({ meal }: IPlanMealProps): ReactElement => {
   const { title, color } = MEAL_TYPE_CONFIG[meal.type];
   const { setActivePhoto } = useContext(PlanContext);
@@ -77,13 +41,13 @@ const PlanMeal = ({ meal }: IPlanMealProps): ReactElement => {
             className={`p-0.5 rounded text-white text-xs ${
               meal.photo ? 'bg-red-400' : 'bg-gray-300'
             }`}
-            onClick={() => meal.photo && setActivePhoto(meal.photo)}
+            onClick={() => setActivePhoto(meal?.photo || '')}
           >
             Foto
           </button>
         </div>
       </div>
-      <p className="text-green-900">{parseMealValue(meal.value)}</p>
+      <PlanMealValue meal={meal} />
     </section>
   );
 };

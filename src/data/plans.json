@@ -20,7 +20,8 @@
           },
           {
             "type": "dinner",
-            "value": "Filet de pollo con 2 rodajas de queso y cebollas rebosadas + ensalada de tomate y zanahoria"
+            "value": "",
+            "editable": true
           }
         ]
       },
@@ -63,7 +64,8 @@
           },
           {
             "type": "dinner",
-            "value": "Omelette (2 huevos) de espinaca con queso, tomate y arvejas + ensalada de zanahoria, choclo y tomate"
+            "value": "Omelette (2 huevos) de espinaca con queso, tomate y arvejas + ensalada de zanahoria, choclo y tomate",
+            "editable": true
           }
         ]
       },
@@ -215,7 +217,7 @@
       },
       {
         "slug": "huevo-revuelto",
-        "title": "",
+        "title": "Huevo revuelto",
         "ingredients": ["1 huevo", "1 clara", "chorrito de leche"],
         "process": "batí el huevo y la clara, agrega el chorrito de leche y verter sobre una sartén bien caliente de teflón o con apenas de aceite."
       },

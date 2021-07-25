@@ -12,16 +12,20 @@ const PhotosModal = ({ onClose }: IModalContent): ReactElement => {
         ❎
       </button>
       <div className="flex flex-col h-full justify-center items-center">
-        <Img
-          src={activePhoto}
-          key={activePhoto}
-          className="w-full md:h-full"
-          // @TODO Replace with SVG spinner
-          placeholder={<p>Cargando</p>}
-        />
+        {activePhoto ? (
+          <Img
+            src={activePhoto}
+            key={activePhoto}
+            className="w-full md:h-full"
+            // @TODO Replace with SVG spinner
+            placeholder={<p>Cargando</p>}
+          />
+        ) : (
+          <p>No se ha subido ninguna foto aún.</p>
+        )}
         <div className="mt-2.5 overflow-hidden">
           <button>⬆</button>
-          <button>❌</button>
+          {activePhoto && <button>❌</button>}
         </div>
       </div>
     </section>
