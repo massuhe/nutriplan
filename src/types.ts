@@ -4,6 +4,7 @@ export interface IMeal {
   type: MealType;
   value: string;
   editable?: boolean;
+  photo?: string;
 }
 
 export interface IPlan {
@@ -27,4 +28,8 @@ export interface IRecipe {
 export interface IPlanDay {
   date: string;
   meals: IMeal[];
+}
+
+export interface IModalContent {
+  onClose: () => void;
 }

@@ -1,11 +1,6 @@
-import React, { ReactElement } from 'react';
-import type { IngredientGroup, IIngredients, IRecipe } from 'src/types';
-import Overlay from './Overlay';
-
-interface IRecipeModal {
-  recipe?: IRecipe;
-  onClose: () => void;
-}
+import React, { ReactElement, useContext } from 'react';
+import type { IngredientGroup, IIngredients, IModalContent } from 'src/types';
+import { PlanContext } from './PlanContext';
 
 interface IIngredientsProps {
   ingredients: IIngredients[] | void;
@@ -41,24 +36,24 @@ const Ingredients = ({ ingredients }: IIngredientsProps): ReactElement => {
   );
 };
 
-const RecipeModal = ({ recipe, onClose }: IRecipeModal): ReactElement => {
+const RecipeModal = ({ onClose }: IModalContent): ReactElement => {
+  const { activeRecipe: recipe } = useContext(PlanContext);
+
   return (
-    <Overlay visible={Boolean(recipe)} onOverlayClick={onClose}>
-      <section className="bg-white h-full p-4 md:p-10 max-w-2xl flex flex-col shadow-2xl rounded-tl-2xl">
-        <button className="self-end" onClick={onClose}>
-          ❎
-        </button>
-        <h2 className="font-serif text-3xl my-4">{recipe?.title}</h2>
-        <article>
-          <h3 className="font-serif text-2xl my-3">Ingredientes</h3>
-          <Ingredients ingredients={recipe?.ingredients} />
-        </article>
-        <article>
-          <h3 className="font-serif text-2xl my-3">Preparación</h3>
-          <p>{recipe?.process}</p>
-        </article>
-      </section>
-    </Overlay>
+    <section className="w-full h-full bg-white p-4 flex flex-col shadow-2xl md:w-auto md:p-10 md:max-w-2xl md:rounded-tl-2xl">
+      <button className="self-end" onClick={onClose}>
+        ❎
+      </button>
+      <h2 className="font-serif text-3xl my-4">{recipe?.title}</h2>
+      <article>
+        <h3 className="font-serif text-2xl my-3">Ingredientes</h3>
+        <Ingredients ingredients={recipe?.ingredients} />
+      </article>
+      <article>
+        <h3 className="font-serif text-2xl my-3">Preparación</h3>
+        <p>{recipe?.process}</p>
+      </article>
+    </section>
   );
 };
 

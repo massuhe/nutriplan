@@ -1,56 +1,92 @@
-import React, { ReactElement, useRef, useEffect } from 'react';
+import React, { ReactElement, useRef, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
+
+type OverlayPosition = 'left' | 'right' | 'center';
 
 interface IOverlayProps {
   visible: boolean;
   children: ReactElement;
   onOverlayClick: React.MouseEventHandler;
+  position: OverlayPosition;
 }
 
 const elModalRoot = document.getElementById('modal-root');
 
-function getOverlayStyles(visible: boolean) {
-  if (visible)
-    return {
-      wrapper: 'visible',
-      content: '',
-      overlay: 'opacity-50',
-      wrapperTransition: 'visibility 0s linear',
-    };
+function getWrapperStyles(visible: boolean, position: OverlayPosition): string {
+  const positionStyles =
+    {
+      right: 'justify-right',
+      center: 'justify-center items-center',
+      left: 'justify-left',
+    }[position as string] || '';
 
+  const visibilityStyles = visible ? 'visible' : 'invisible';
+
+  return `${positionStyles} ${visibilityStyles}`;
+}
+
+function getContentStyles(visible: boolean, position: OverlayPosition): string {
+  if (visible) return '';
+
+  return (
+    {
+      right: 'translate-x-full',
+      center: 'scale-0',
+    }[position as string] || ''
+  );
+}
+
+function getOverlayStyles(visible: boolean): string {
+  return visible ? 'opacity-50' : 'opacity-0';
+}
+
+function getWrapperTransitionStyles(visible: boolean): string {
+  return visible ? 'visibility 0s linear' : 'visibility 0s 150ms linear';
+}
+
+function getOverlayTransitionStyles(
+  visible: boolean,
+  position: OverlayPosition
+) {
   return {
-    wrapper: 'invisible',
-    content: 'translate-x-full',
-    overlay: 'opacity-0',
-    wrapperTransition: 'visibility 0s 150ms linear',
+    wrapper: getWrapperStyles(visible, position),
+    content: getContentStyles(visible, position),
+    overlay: getOverlayStyles(visible),
+    wrapperTransition: getWrapperTransitionStyles(visible),
   };
 }
 
 // @TODO: Support more positions.
-// @TODO: Trap focus
+// @TODO: Trap focus.
+// @TODO: Make transition duration configurable via props.
 const Overlay = ({
   visible,
   children,
   onOverlayClick,
+  position = 'center',
 }: IOverlayProps): ReactElement => {
   const refOverlay = useRef(document.createElement('div'));
-  const refContent = useRef(null);
+  const [visibleReady, setVisibleReady] = useState<boolean>(false);
 
-  useEffect(() => {
-    if (elModalRoot?.innerHTML) elModalRoot.innerHTML = '';
+  const appendModal = () => {
     elModalRoot?.appendChild(refOverlay.current);
+  };
 
-    return () => {
-      elModalRoot?.removeChild(refOverlay.current);
-    };
-  }, []);
+  const clearModal = () => {
+    if (!elModalRoot?.contains(refOverlay.current)) return;
+    setTimeout(() => elModalRoot.removeChild(refOverlay.current), 150);
+  };
 
   useEffect(() => {
-    const method = visible ? 'add' : 'remove';
-    document.body.classList[method]('overflow-hidden');
+    visible ? appendModal() : clearModal();
+    setTimeout(() => setVisibleReady(visible));
   }, [visible]);
 
-  const classes = getOverlayStyles(visible);
+  useEffect(() => {
+    document.body.classList[visibleReady ? 'add' : 'remove']('overflow-hidden');
+  }, [visibleReady]);
+
+  const classes = getOverlayTransitionStyles(visibleReady, position);
 
   return ReactDOM.createPortal(
     <section
@@ -58,8 +94,7 @@ const Overlay = ({
       style={{ transition: classes.wrapperTransition }}
     >
       <div
-        className={`transition-transform transform z-30 ${classes.content}`}
-        ref={refContent}
+        className={`transition-transform transform z-30 w-full h-full md:w-auto md:h-auto ${classes.content}`}
       >
         {children}
       </div>

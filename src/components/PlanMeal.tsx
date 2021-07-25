@@ -1,6 +1,6 @@
 import React, { ReactElement, useContext } from 'react';
 import type { IMeal, MealType } from 'src/types';
-import { RecipesContext } from './RecipesContext';
+import { PlanContext } from './PlanContext';
 
 interface IPlanMealProps {
   meal: IMeal;
@@ -30,7 +30,7 @@ const MEAL_TYPE_CONFIG: {
 const rexMealWithRecipe = /(@[a-z-]+)/g;
 
 const RecipeMeal = ({ value }: { value: string }) => {
-  const { recipes, setActiveRecipe } = useContext(RecipesContext);
+  const { recipes, setActiveRecipe } = useContext(PlanContext);
   const recipe = recipes.find((r) => r.slug === value);
 
   if (!recipe) return <span>{value}</span>;
@@ -66,12 +66,21 @@ const parseMealValue = (mealValue: string) => {
 
 const PlanMeal = ({ meal }: IPlanMealProps): ReactElement => {
   const { title, color } = MEAL_TYPE_CONFIG[meal.type];
+  const { setActivePhoto } = useContext(PlanContext);
+
   return (
     <section className="my-2">
       <div className="flex justify-between border-b-2">
         <h4 className={`font-semibold text-${color}-500`}>{title}</h4>
         <div>
-          <button>Foto</button>
+          <button
+            className={`p-0.5 rounded text-white text-xs ${
+              meal.photo ? 'bg-red-400' : 'bg-gray-300'
+            }`}
+            onClick={() => meal.photo && setActivePhoto(meal.photo)}
+          >
+            Foto
+          </button>
         </div>
       </div>
       <p className="text-green-900">{parseMealValue(meal.value)}</p>

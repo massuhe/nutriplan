@@ -37,7 +37,8 @@
           },
           {
             "type": "snack",
-            "value": "Vaso de leche + @panqueque-avena + arándanos + naranja"
+            "value": "Vaso de leche + @panqueque-avena + arándanos + naranja",
+            "photo": "https://fegasacruz.org/wp-content/uploads/2020/09/panqueques-con-leche-fegarecetas.jpg"
           },
           {
             "type": "dinner",
@@ -83,7 +84,8 @@
           },
           {
             "type": "dinner",
-            "value": "@omelette-espinaca con queso, tomate y arvejas + ensalada de zanahoria, choclo y tomate"
+            "value": "@omelette-espinaca con queso, tomate y arvejas + ensalada de zanahoria, choclo y tomate",
+            "photo": "https://img-global.cpcdn.com/recipes/5d3edd9bc802edf4/751x532cq70/omelette-de-espinaca-%F0%9F%A5%AC-foto-principal.jpg"
           }
         ]
       },
