@@ -1,32 +1,27 @@
 import React, {
   ReactElement,
-  useContext,
   useEffect,
   useRef,
   useState,
 } from 'react';
-import type { IMeal } from 'src/types';
-import { PlanContext } from './PlanContext';
+import type { IMeal, IRecipe } from 'src/types';
 
 const rexMealWithRecipe = /(@[a-z-]+)/g;
 
 interface IRecipeMealPrios {
-  value: string;
+  recipe: IRecipe|void;
+  onRecipeClick: (recipe: IRecipe) => void;
 }
 
-const RecipeMeal = ({ value }: IRecipeMealPrios) => {
-  const { recipes, setActiveRecipe } = useContext(PlanContext);
-  const recipe = recipes.find((r) => r.slug === value);
-
-  if (!recipe) return <span>{value}</span>;
-
+const RecipeMeal = ({ recipe, onRecipeClick }: IRecipeMealPrios) => {
+  if (!recipe) return <></>;
   // @TODO: Create new component <InlineButton /> that encapsulates accessibility.
   return (
     <a
       href="/"
       onClick={(e) => {
         e.preventDefault();
-        setActiveRecipe(recipe);
+        onRecipeClick(recipe);
       }}
       className="hover:text-blue-600 text-blue-400"
       role="button"
@@ -38,15 +33,17 @@ const RecipeMeal = ({ value }: IRecipeMealPrios) => {
 
 interface IFixedMealProps {
   value: string;
+  recipes: IRecipe[]|void;
+  onRecipeClick: (recipe: IRecipe) => void;
 }
 
-const FixedMeal = ({ value }: IFixedMealProps) => {
+const FixedMeal = ({ value, recipes, onRecipeClick }: IFixedMealProps) => {
   const mealValue = value
     .split(rexMealWithRecipe)
     .filter(Boolean)
     .map((value: string) =>
       value.startsWith('@') ? (
-        <RecipeMeal value={value.slice(1)} key={value} />
+        <RecipeMeal key={value} recipe={recipes?.find(r => r.slug === value.slice(1))} onRecipeClick={onRecipeClick}/>
       ) : (
         <span key={value}>{value}</span>
       )
@@ -131,9 +128,11 @@ const EditableMeal = ({ initialValue, onChange }: IEditableMealProps) => {
 
 interface IPlanMealValueProps {
   meal: IMeal;
+  recipes: IRecipe[]|void;
+  onRecipeClick: (recipe: IRecipe) => void;
 }
 
-const PlanMealValue = ({ meal }: IPlanMealValueProps): ReactElement => {
+const PlanMealValue = ({ meal, recipes, onRecipeClick }: IPlanMealValueProps): ReactElement => {
   return meal.editable ? (
     <EditableMeal
       initialValue={meal.value}
@@ -141,7 +140,7 @@ const PlanMealValue = ({ meal }: IPlanMealValueProps): ReactElement => {
       onChange={(val) => console.log(val)}
     />
   ) : (
-    <FixedMeal value={meal.value} />
+    <FixedMeal value={meal.value} recipes={recipes} onRecipeClick={onRecipeClick}/>
   );
 };
 

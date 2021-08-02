@@ -1,10 +1,12 @@
-import React, { ReactElement, useContext } from 'react';
-import type { IMeal, MealType } from 'src/types';
-import { PlanContext } from './PlanContext';
+import React, { ReactElement } from 'react';
+import type { IMeal, IRecipe, MealType } from 'src/types';
 import PlanMealValue from './PlanMealValue';
 
 interface IPlanMealProps {
   meal: IMeal;
+  recipes: IRecipe[]|void;
+  onPhotoClick: (activePhoto: string) => void;
+  onRecipeClick: (recipe: IRecipe) => void;
 }
 
 const MEAL_TYPE_CONFIG: {
@@ -28,9 +30,8 @@ const MEAL_TYPE_CONFIG: {
   },
 };
 
-const PlanMeal = ({ meal }: IPlanMealProps): ReactElement => {
+const PlanMeal = ({ meal, recipes = [], onPhotoClick, onRecipeClick }: IPlanMealProps): ReactElement => {
   const { title, color } = MEAL_TYPE_CONFIG[meal.type];
-  const { setActivePhoto } = useContext(PlanContext);
 
   return (
     <section className="my-2">
@@ -41,13 +42,13 @@ const PlanMeal = ({ meal }: IPlanMealProps): ReactElement => {
             className={`p-0.5 rounded text-white text-xs ${
               meal.photo ? 'bg-red-400' : 'bg-gray-300'
             }`}
-            onClick={() => setActivePhoto(meal?.photo || '')}
+            onClick={() => onPhotoClick(meal?.photo || '')}
           >
             Foto
           </button>
         </div>
       </div>
-      <PlanMealValue meal={meal} />
+      <PlanMealValue meal={meal} recipes={recipes} onRecipeClick={onRecipeClick}/>
     </section>
   );
 };

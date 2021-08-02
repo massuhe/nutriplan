@@ -1,3 +1,4 @@
+// TODO: Move to /types/common.ts
 export type MealType = 'breakfast' | 'lunch' | 'snack' | 'dinner';
 
 export interface IMeal {

@@ -5,7 +5,7 @@ import useCarousel from '../hooks/useCarousel.js';
 import useResponsiveCall from '../hooks/useResponsiveCall';
 
 interface IPlanCarouselProps<T> {
-  allItems: Array<T>;
+  allItems: Array<T>|void;
   children: (item: T) => ReactElement;
   index: number;
   keyProp: keyof T;
@@ -14,7 +14,7 @@ interface IPlanCarouselProps<T> {
 }
 
 const Carousel = <T extends unknown>({
-  allItems,
+  allItems = [],
   children,
   index,
   keyProp,

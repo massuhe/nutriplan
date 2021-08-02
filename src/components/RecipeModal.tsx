@@ -1,6 +1,7 @@
-import React, { ReactElement, useContext } from 'react';
-import type { IngredientGroup, IIngredients, IModalContent } from 'src/types';
-import { PlanContext } from './PlanContext';
+import React, { ReactElement } from 'react';
+import Overlay from './Overlay';
+
+import type { IngredientGroup, IIngredients, IRecipe } from 'src/types';
 
 interface IIngredientsProps {
   ingredients: IIngredients[] | void;
@@ -36,10 +37,16 @@ const Ingredients = ({ ingredients }: IIngredientsProps): ReactElement => {
   );
 };
 
-const RecipeModal = ({ onClose }: IModalContent): ReactElement => {
-  const { activeRecipe: recipe } = useContext(PlanContext);
+interface IRecipeModalProps {
+  recipe: IRecipe|void;
+  visible: boolean;
+  onClose: () => void;
+}
+
+const RecipeModal = ({ recipe, visible, onClose }: IRecipeModalProps): ReactElement => {
 
   return (
+    <Overlay visible={visible} onOverlayClick={onClose} position="right">
     <section className="w-full h-full bg-white p-4 flex flex-col shadow-2xl md:w-auto md:p-10 md:max-w-2xl md:rounded-tl-2xl">
       <button className="self-end" onClick={onClose}>
         ❎
@@ -54,6 +61,7 @@ const RecipeModal = ({ onClose }: IModalContent): ReactElement => {
         <p>{recipe?.process}</p>
       </article>
     </section>
+    </Overlay>
   );
 };
 
