@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { QueryClientProvider } from 'react-query'
-import { ReactQueryDevtools } from 'react-query/devtools'
+import { QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 import queryClient from './lib/queryClient';
-import Home from './pages/Home';
+import ViewPlan from './pages/ViewPlan';
 
 const App = (): ReactElement => {
   return (
@@ -11,11 +11,11 @@ const App = (): ReactElement => {
       <Router>
         <Switch>
           <Route path="/">
-            <Home />
+            <ViewPlan />
           </Route>
         </Switch>
       </Router>
-      <ReactQueryDevtools initialIsOpen={false}/>
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 };

@@ -1,7 +1,7 @@
 import React, { ReactElement, useRef, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 
-type OverlayPosition = 'left' | 'right' | 'center';
+type OverlayPosition = 'left' | 'right' | 'center' | 'free';
 
 interface IOverlayProps {
   visible: boolean;
@@ -15,9 +15,9 @@ const elModalRoot = document.getElementById('modal-root');
 function getWrapperStyles(visible: boolean, position: OverlayPosition): string {
   const positionStyles =
     {
-      right: 'justify-right',
-      center: 'justify-center items-center',
-      left: 'justify-left',
+      right: 'flex justify-right',
+      center: 'flex justify-center items-center',
+      left: 'flex justify-left',
     }[position as string] || '';
 
   const visibilityStyles = visible ? 'visible' : 'invisible';
@@ -26,7 +26,7 @@ function getWrapperStyles(visible: boolean, position: OverlayPosition): string {
 }
 
 function getContentStyles(visible: boolean, position: OverlayPosition): string {
-  if (visible) return '';
+  if (visible || position === 'free') return '';
 
   return (
     {
@@ -90,14 +90,18 @@ const Overlay = ({
 
   return ReactDOM.createPortal(
     <section
-      className={`fixed inset-0 flex justify-end z-30 ${classes.wrapper}`}
+      className={`fixed inset-0 justify-end z-30 ${classes.wrapper}`}
       style={{ transition: classes.wrapperTransition }}
     >
-      <div
-        className={`transition-transform transform z-30 w-full h-full md:w-auto md:h-auto ${classes.content}`}
-      >
-        {children}
-      </div>
+      {position === 'free' ? (
+        children
+      ) : (
+        <div
+          className={`transition-transform transform z-30 w-full h-full md:w-auto md:h-auto ${classes.content}`}
+        >
+          {children}
+        </div>
+      )}
       <div
         className={`transition-opacity absolute bg-black inset-0 z-20 ${classes.overlay}`}
         onClick={onOverlayClick}

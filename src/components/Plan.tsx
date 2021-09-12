@@ -7,7 +7,8 @@ import type { IPlan, IPlanDay, IRecipe } from 'src/types.js';
 
 const findTodaysPlanIndex = (planDay: IPlanDay) => {
   const planDate = new Date(planDay.date);
-  const today = new Date('2021-03-14 12:00');
+  // TODO: handle finished plans
+  const today = new Date('2021-03-13 12:00');
   return (
     planDate.getDay() === today.getDay() &&
     planDate.getFullYear() === today.getFullYear() &&
@@ -16,18 +17,23 @@ const findTodaysPlanIndex = (planDay: IPlanDay) => {
 };
 
 interface IPlanProps {
-  plan: IPlan|undefined;
+  plan: IPlan | undefined;
   loading: boolean;
   onPhotoClick: (activePhoto: string) => void;
   onRecipeClick: (recipe: IRecipe) => void;
 }
 
-const Plan = ({ plan, loading, onPhotoClick, onRecipeClick }: IPlanProps): ReactElement => {
+const Plan = ({
+  plan,
+  loading,
+  onPhotoClick,
+  onRecipeClick,
+}: IPlanProps): ReactElement => {
   // TODO: Add enter and exit animation between skeletons and actual elements.
   if (loading) return <PlanSkeletons />;
 
-  const [index, setIndex] = useState<number>(() =>
-    plan?.days?.findIndex(findTodaysPlanIndex) || 0
+  const [index, setIndex] = useState<number>(
+    () => plan?.days?.findIndex(findTodaysPlanIndex) || 0
   );
 
   const handleIndexChange = (newIndex: number) => setIndex(newIndex);
@@ -40,7 +46,14 @@ const Plan = ({ plan, loading, onPhotoClick, onRecipeClick }: IPlanProps): React
         index={index}
         onIndexChange={handleIndexChange}
       >
-        {(planDay) => <PlanDay planDay={planDay} recipes={plan?.recipes} onPhotoClick={onPhotoClick} onRecipeClick={onRecipeClick} />}
+        {(planDay) => (
+          <PlanDay
+            planDay={planDay}
+            recipes={plan?.recipes}
+            onPhotoClick={onPhotoClick}
+            onRecipeClick={onRecipeClick}
+          />
+        )}
       </Carousel>
     </div>
   );

@@ -9,6 +9,7 @@ export interface IMeal {
 }
 
 export interface IPlan {
+  id: string;
   name: string;
   startDate: string;
   recipes: IRecipe[];
