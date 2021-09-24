@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import Overlay from './Overlay';
 
 import type { IngredientGroup, IIngredients, IRecipe } from 'src/types';
@@ -7,7 +7,7 @@ interface IIngredientsProps {
   ingredients: IIngredients[] | void;
 }
 
-const Ingredients = ({ ingredients }: IIngredientsProps): ReactElement => {
+const Ingredients = ({ ingredients }: IIngredientsProps): JSX.Element => {
   const firstIngredient = ingredients?.[0];
 
   if (!firstIngredient) return <span>No ingredients</span>;
@@ -38,29 +38,32 @@ const Ingredients = ({ ingredients }: IIngredientsProps): ReactElement => {
 };
 
 interface IRecipeModalProps {
-  recipe: IRecipe|void;
+  recipe: IRecipe | void;
   visible: boolean;
   onClose: () => void;
 }
 
-const RecipeModal = ({ recipe, visible, onClose }: IRecipeModalProps): ReactElement => {
-
+const RecipeModal = ({
+  recipe,
+  visible,
+  onClose,
+}: IRecipeModalProps): JSX.Element => {
   return (
     <Overlay visible={visible} onOverlayClick={onClose} position="right">
-    <section className="w-full h-full bg-white p-4 flex flex-col shadow-2xl md:w-auto md:p-10 md:max-w-2xl md:rounded-tl-2xl">
-      <button className="self-end" onClick={onClose}>
-        ❎
-      </button>
-      <h2 className="font-serif text-3xl my-4">{recipe?.title}</h2>
-      <article>
-        <h3 className="font-serif text-2xl my-3">Ingredientes</h3>
-        <Ingredients ingredients={recipe?.ingredients} />
-      </article>
-      <article>
-        <h3 className="font-serif text-2xl my-3">Preparación</h3>
-        <p>{recipe?.process}</p>
-      </article>
-    </section>
+      <section className="w-full h-full bg-white p-4 flex flex-col shadow-2xl md:w-auto md:p-10 md:max-w-2xl md:rounded-tl-2xl">
+        <button className="self-end" onClick={onClose}>
+          ❎
+        </button>
+        <h2 className="font-serif text-3xl my-4">{recipe?.title}</h2>
+        <article>
+          <h3 className="font-serif text-2xl my-3">Ingredientes</h3>
+          <Ingredients ingredients={recipe?.ingredients} />
+        </article>
+        <article>
+          <h3 className="font-serif text-2xl my-3">Preparación</h3>
+          <p>{recipe?.process}</p>
+        </article>
+      </section>
     </Overlay>
   );
 };

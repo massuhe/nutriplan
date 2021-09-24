@@ -1,7 +1,7 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import Avocado from './Avocado.js';
 
-const Header = (): ReactElement => (
+const Header = (): JSX.Element => (
   <header className="py-5 text-center bg-green-50 relative sm:px-6 sm:py-12 sm:text-left">
     <h1 className="font-serif font-bold text-5xl text-green-500">NutriPlan!</h1>
     <Avocado

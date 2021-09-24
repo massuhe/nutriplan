@@ -1,11 +1,11 @@
-import React, { ReactElement, useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 
 type OverlayPosition = 'left' | 'right' | 'center' | 'free';
 
 interface IOverlayProps {
   visible: boolean;
-  children: ReactElement;
+  children: JSX.Element;
   onOverlayClick: React.MouseEventHandler;
   position: OverlayPosition;
 }
@@ -64,7 +64,7 @@ const Overlay = ({
   children,
   onOverlayClick,
   position = 'center',
-}: IOverlayProps): ReactElement => {
+}: IOverlayProps): JSX.Element => {
   const refOverlay = useRef(document.createElement('div'));
   const [visibleReady, setVisibleReady] = useState<boolean>(false);
 

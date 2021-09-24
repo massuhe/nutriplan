@@ -1,9 +1,9 @@
-import React, { ReactElement, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface IImgProps {
   src: string;
   className?: string;
-  placeholder?: ReactElement;
+  placeholder?: JSX.Element;
   onLoad?: () => void;
 }
 
@@ -12,7 +12,7 @@ const Img = ({
   className = '',
   placeholder = <></>,
   onLoad,
-}: IImgProps): ReactElement => {
+}: IImgProps): JSX.Element => {
   const [loading, setLoading] = useState<boolean>(true);
   const refShouldTransition = useRef<boolean>(false);
 

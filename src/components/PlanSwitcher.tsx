@@ -1,4 +1,4 @@
-import React, { CSSProperties, ReactElement, useEffect, useState } from 'react';
+import React, { CSSProperties, useEffect, useState } from 'react';
 import Overlay from './Overlay.js';
 import PlanSearcher from './PlanSearcher.js';
 
@@ -16,7 +16,7 @@ const PlanSwitcher = ({
   coordinates,
   onDismiss,
   onPlanChange,
-}: IPlanSwitcherProps): ReactElement => {
+}: IPlanSwitcherProps): JSX.Element => {
   const [shouldShowSearch, setShouldShowSearch] = useState<boolean>(false);
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const PlanSwitcher = ({
       position="free"
     >
       <section
-        className={`bg-white transform z-50 absolute p-5 transition-opacity ${
+        className={`bg-white transform z-50 absolute p-5 transition-opacity right-0 sm:right-auto ${
           isChangingPlan ? 'opacity-100' : 'opacity-0'
         }`}
         style={coordinates as CSSProperties}

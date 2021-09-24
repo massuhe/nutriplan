@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 
 interface ICarouselArrowProps {
   direction: string;
@@ -8,7 +8,7 @@ interface ICarouselArrowProps {
 function CarouselArrow({
   direction,
   onMove,
-}: ICarouselArrowProps): ReactElement {
+}: ICarouselArrowProps): JSX.Element {
   const { char, move, extraClass } = {
     left: { char: '<', move: -1, extraClass: '' },
     right: { char: '>', move: 1, extraClass: 'right-0' },

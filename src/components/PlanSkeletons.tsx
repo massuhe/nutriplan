@@ -1,8 +1,8 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 
 const MAX_PLAN_DAYS_DISPLAY = 5;
 
-const PlanSkeletons = (): ReactElement => (
+const PlanSkeletons = (): JSX.Element => (
   <div className="h-full flex flex-1 px-4 py-20">
     {Array.from({ length: MAX_PLAN_DAYS_DISPLAY }).map((_, i) => (
       <div

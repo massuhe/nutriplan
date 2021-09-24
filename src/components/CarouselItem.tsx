@@ -1,8 +1,8 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 
 interface ICarouselItemProps {
   active: boolean;
-  children: ReactElement;
+  children: JSX.Element;
   isTransitionInProgress: boolean;
 }
 
@@ -10,7 +10,7 @@ const CarouselItem = ({
   children,
   isTransitionInProgress,
   active,
-}: ICarouselItemProps): ReactElement => (
+}: ICarouselItemProps): JSX.Element => (
   <div
     className="flex flex-col"
     style={{

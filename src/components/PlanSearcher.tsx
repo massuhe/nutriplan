@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from 'react';
+import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import api from '../lib/api';
 
@@ -10,7 +10,7 @@ interface IPlanSearcherProps {
 const PlanSearcher = ({
   activePlanId,
   onPlanChange,
-}: IPlanSearcherProps): ReactElement => {
+}: IPlanSearcherProps): JSX.Element => {
   const { data: planNames, isLoading } = useQuery(
     ['planNames'],
     api.getAllPlanNames

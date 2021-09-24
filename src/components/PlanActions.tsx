@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from 'react';
+import React, { useState } from 'react';
 import useCoordinates from '../hooks/useCoordiantes.js';
 import type { IPlan } from '../types.js';
 import PlanSwitcher from './PlanSwitcher.js';
@@ -11,7 +11,7 @@ interface IPlanActions {
 const PlanActions = ({
   plan,
   onPlanChange: parentOnPlanChange,
-}: IPlanActions): ReactElement => {
+}: IPlanActions): JSX.Element => {
   const [isChangingPlan, setIsChangingPlan] = useState<boolean>(false);
   const { ref, bottom: top, left } = useCoordinates();
 

@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from 'react';
+import React, { useState } from 'react';
 import Carousel from './Carousel.jsx';
 import PlanDay from './PlanDay.js';
 import PlanSkeletons from './PlanSkeletons.js';
@@ -28,7 +28,7 @@ const Plan = ({
   loading,
   onPhotoClick,
   onRecipeClick,
-}: IPlanProps): ReactElement => {
+}: IPlanProps): JSX.Element => {
   // TODO: Add enter and exit animation between skeletons and actual elements.
   if (loading) return <PlanSkeletons />;
 

@@ -1,12 +1,12 @@
-import React, { useEffect, ReactElement, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import CarouselArrow from './CarouselArrow.jsx';
 import CarouselItem from './CarouselItem.jsx';
 import useCarousel from '../hooks/useCarousel.js';
 import useResponsiveCall from '../hooks/useResponsiveCall';
 
 interface IPlanCarouselProps<T> {
-  allItems: Array<T>|void;
-  children: (item: T) => ReactElement;
+  allItems: Array<T> | void;
+  children: (item: T) => JSX.Element;
   index: number;
   keyProp: keyof T;
   onIndexChange: (newIndex: number) => void;
@@ -20,7 +20,7 @@ const Carousel = <T extends unknown>({
   keyProp,
   onIndexChange,
   transitionDuraton = 350,
-}: IPlanCarouselProps<T>): ReactElement => {
+}: IPlanCarouselProps<T>): JSX.Element => {
   const [itemsToShow, setItemsToShow] = useState<number>(2);
 
   const {

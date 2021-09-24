@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from 'react';
+import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 
 import api from '../lib/api';
@@ -14,7 +14,8 @@ interface IViewPlan {
   planId?: string;
 }
 
-const ViewPlan = ({ planId }: IViewPlan): ReactElement => {
+const ViewPlan = ({ planId }: IViewPlan): JSX.Element => {
+  console.log({ planId });
   const [currentPlan, setCurrentPlan] = useState<string | undefined>(planId);
   const { data: plan, isLoading } = useQuery(['plan', currentPlan], () =>
     api.getPlan(currentPlan)

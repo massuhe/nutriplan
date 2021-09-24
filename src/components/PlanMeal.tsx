@@ -1,10 +1,10 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import type { IMeal, IRecipe, MealType } from 'src/types';
 import PlanMealValue from './PlanMealValue';
 
 interface IPlanMealProps {
   meal: IMeal;
-  recipes: IRecipe[]|void;
+  recipes: IRecipe[] | void;
   onPhotoClick: (activePhoto: string) => void;
   onRecipeClick: (recipe: IRecipe) => void;
 }
@@ -30,7 +30,12 @@ const MEAL_TYPE_CONFIG: {
   },
 };
 
-const PlanMeal = ({ meal, recipes = [], onPhotoClick, onRecipeClick }: IPlanMealProps): ReactElement => {
+const PlanMeal = ({
+  meal,
+  recipes = [],
+  onPhotoClick,
+  onRecipeClick,
+}: IPlanMealProps): JSX.Element => {
   const { title, color } = MEAL_TYPE_CONFIG[meal.type];
 
   return (
@@ -48,7 +53,11 @@ const PlanMeal = ({ meal, recipes = [], onPhotoClick, onRecipeClick }: IPlanMeal
           </button>
         </div>
       </div>
-      <PlanMealValue meal={meal} recipes={recipes} onRecipeClick={onRecipeClick}/>
+      <PlanMealValue
+        meal={meal}
+        recipes={recipes}
+        onRecipeClick={onRecipeClick}
+      />
     </section>
   );
 };

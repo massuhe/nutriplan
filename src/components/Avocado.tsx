@@ -1,6 +1,16 @@
 import React from 'react';
 
-const Avocado = ({ className, width = '228.066', height = '312.99' }) => (
+interface IAvocadoProps {
+  className: string;
+  width?: string;
+  height?: string;
+}
+
+const Avocado = ({
+  className,
+  width = '228.066',
+  height = '312.99',
+}: IAvocadoProps): JSX.Element => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={width}

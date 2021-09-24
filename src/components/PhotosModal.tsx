@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import Img from './Img.js';
 import Overlay from './Overlay.js';
 
@@ -8,7 +8,11 @@ interface IPhotosModalProps {
   onClose: () => void;
 }
 
-const PhotosModal = ({ activePhoto, visible, onClose }: IPhotosModalProps): ReactElement => {
+const PhotosModal = ({
+  activePhoto,
+  visible,
+  onClose,
+}: IPhotosModalProps): JSX.Element => {
   return (
     <Overlay visible={visible} onOverlayClick={onClose} position="center">
       <section className="w-full h-full flex flex-col bg-white md:p-5 md:rounded-2xl shadow-2xl max-w-3xl">

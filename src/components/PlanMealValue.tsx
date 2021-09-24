@@ -1,15 +1,10 @@
-import React, {
-  ReactElement,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import type { IMeal, IRecipe } from 'src/types';
 
 const rexMealWithRecipe = /(@[a-z-]+)/g;
 
 interface IRecipeMealPrios {
-  recipe: IRecipe|void;
+  recipe: IRecipe | void;
   onRecipeClick: (recipe: IRecipe) => void;
 }
 
@@ -33,7 +28,7 @@ const RecipeMeal = ({ recipe, onRecipeClick }: IRecipeMealPrios) => {
 
 interface IFixedMealProps {
   value: string;
-  recipes: IRecipe[]|void;
+  recipes: IRecipe[] | void;
   onRecipeClick: (recipe: IRecipe) => void;
 }
 
@@ -43,7 +38,11 @@ const FixedMeal = ({ value, recipes, onRecipeClick }: IFixedMealProps) => {
     .filter(Boolean)
     .map((value: string) =>
       value.startsWith('@') ? (
-        <RecipeMeal key={value} recipe={recipes?.find(r => r.slug === value.slice(1))} onRecipeClick={onRecipeClick}/>
+        <RecipeMeal
+          key={value}
+          recipe={recipes?.find((r) => r.slug === value.slice(1))}
+          onRecipeClick={onRecipeClick}
+        />
       ) : (
         <span key={value}>{value}</span>
       )
@@ -128,11 +127,15 @@ const EditableMeal = ({ initialValue, onChange }: IEditableMealProps) => {
 
 interface IPlanMealValueProps {
   meal: IMeal;
-  recipes: IRecipe[]|void;
+  recipes: IRecipe[] | void;
   onRecipeClick: (recipe: IRecipe) => void;
 }
 
-const PlanMealValue = ({ meal, recipes, onRecipeClick }: IPlanMealValueProps): ReactElement => {
+const PlanMealValue = ({
+  meal,
+  recipes,
+  onRecipeClick,
+}: IPlanMealValueProps): JSX.Element => {
   return meal.editable ? (
     <EditableMeal
       initialValue={meal.value}
@@ -140,7 +143,11 @@ const PlanMealValue = ({ meal, recipes, onRecipeClick }: IPlanMealValueProps): R
       onChange={(val) => console.log(val)}
     />
   ) : (
-    <FixedMeal value={meal.value} recipes={recipes} onRecipeClick={onRecipeClick}/>
+    <FixedMeal
+      value={meal.value}
+      recipes={recipes}
+      onRecipeClick={onRecipeClick}
+    />
   );
 };
 
