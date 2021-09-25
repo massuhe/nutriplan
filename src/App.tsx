@@ -20,7 +20,7 @@ const App = (): JSX.Element => {
             {/* TODO: Remove this and replace by home implementation */}
             <Redirect to="/view" />
           </Route>
-          <Route path="/view">
+          <Route path="/view/:planId?">
             <ViewPlan />
           </Route>
           <Route path="*">

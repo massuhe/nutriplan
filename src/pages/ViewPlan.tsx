@@ -9,16 +9,16 @@ import PhotosModal from '../components/PhotosModal.js';
 import RecipeModal from '../components/RecipeModal.js';
 
 import type { IRecipe } from 'src/types';
+import { useParams } from 'react-router';
 
-interface IViewPlan {
+interface IViewPlanParams {
   planId?: string;
 }
 
-const ViewPlan = ({ planId }: IViewPlan): JSX.Element => {
-  console.log({ planId });
-  const [currentPlan, setCurrentPlan] = useState<string | undefined>(planId);
-  const { data: plan, isLoading } = useQuery(['plan', currentPlan], () =>
-    api.getPlan(currentPlan)
+const ViewPlan = (): JSX.Element => {
+  const { planId } = useParams<IViewPlanParams>();
+  const { data: plan, isLoading } = useQuery(['plan', planId], () =>
+    api.getPlan(planId)
   );
   const [activePhoto, setActivePhoto] = useState<string>('');
   const [recipe, setRecipe] = useState<IRecipe>();
@@ -36,15 +36,11 @@ const ViewPlan = ({ planId }: IViewPlan): JSX.Element => {
     setActiveModal('recipes');
   };
 
-  const onPlanChange = (newPlanId: string) => {
-    setCurrentPlan(newPlanId);
-  };
-
   return (
     <>
       <Header />
       <main className="flex-1 bg-green-500 flex flex-col">
-        <PlanActions plan={plan} onPlanChange={onPlanChange} />
+        <PlanActions plan={plan} />
         <Plan
           plan={plan}
           loading={isLoading}

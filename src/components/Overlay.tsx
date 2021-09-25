@@ -65,7 +65,7 @@ const Overlay = ({
   onOverlayClick,
   position = 'center',
 }: IOverlayProps): JSX.Element => {
-  const refOverlay = useRef(document.createElement('div'));
+  const refOverlay = useRef<HTMLDivElement>(document.createElement('div'));
   const [visibleReady, setVisibleReady] = useState<boolean>(false);
 
   const appendModal = () => {

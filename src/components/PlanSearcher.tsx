@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
+import { Link } from 'react-router-dom';
+
 import api from '../lib/api';
 
 interface IPlanSearcherProps {
   activePlanId?: string;
-  onPlanChange: (planId: string) => void;
 }
 
-const PlanSearcher = ({
-  activePlanId,
-  onPlanChange,
-}: IPlanSearcherProps): JSX.Element => {
+const PlanSearcher = ({ activePlanId }: IPlanSearcherProps): JSX.Element => {
   const { data: planNames, isLoading } = useQuery(
     ['planNames'],
     api.getAllPlanNames
@@ -40,15 +38,15 @@ const PlanSearcher = ({
       />
       <ul>
         {pickeablePlans?.map((planName, i) => (
-          <li key={planName.id}>
-            <button
-              onClick={() => onPlanChange(planName.id)}
+          <li key={planName.id} className="flex">
+            <Link
+              to={`/view/${planName.id}`}
               className={`${getButtonBgClass(
                 i
               )} p-1.5 text-left w-full hover:bg-gray-300`}
             >
               {planName.name}
-            </button>
+            </Link>
           </li>
         ))}
       </ul>

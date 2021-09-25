@@ -5,8 +5,7 @@ import PlanSearcher from './PlanSearcher.js';
 interface IPlanSwitcherProps {
   activePlanId?: string;
   isChangingPlan: boolean;
-  coordinates: { top: number; left: number } | null;
-  onPlanChange: (planId: string) => void;
+  coordinates?: { top: number; left: number };
   onDismiss: () => void;
 }
 
@@ -15,7 +14,6 @@ const PlanSwitcher = ({
   isChangingPlan,
   coordinates,
   onDismiss,
-  onPlanChange,
 }: IPlanSwitcherProps): JSX.Element => {
   const [shouldShowSearch, setShouldShowSearch] = useState<boolean>(false);
 
@@ -39,12 +37,7 @@ const PlanSwitcher = ({
         }`}
         style={coordinates as CSSProperties}
       >
-        {shouldShowSearch && (
-          <PlanSearcher
-            activePlanId={activePlanId}
-            onPlanChange={onPlanChange}
-          />
-        )}
+        {shouldShowSearch && <PlanSearcher activePlanId={activePlanId} />}
       </section>
     </Overlay>
   );

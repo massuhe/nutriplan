@@ -1,7 +1,15 @@
-import { useRef } from 'react';
+import { RefObject, useRef } from 'react';
 
-const useCoordinates = () => {
-  const ref = useRef<HTMLElement>(null);
+interface ICoordinates<T> {
+  ref: RefObject<T> | null;
+  top: number;
+  left: number;
+  right: number;
+  bottom: number;
+}
+
+const useCoordinates = <T extends HTMLElement>(): ICoordinates<T> => {
+  const ref = useRef<T>(null);
   if (!ref.current) return { ref, top: 0, left: 0, right: 0, bottom: 0 };
 
   return {
