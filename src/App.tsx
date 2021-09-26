@@ -7,13 +7,20 @@ import {
 } from 'react-router-dom';
 import { QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
+import { Helmet } from 'react-helmet';
+
 import queryClient from './lib/queryClient.js';
 import ViewPlan from './pages/ViewPlan.js';
 import NotFound from './pages/NotFound.js';
+import CreatePlan from './pages/CreatePlan.jsx';
 
 const App = (): JSX.Element => {
   return (
     <QueryClientProvider client={queryClient}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>NutriPlan!</title>
+      </Helmet>
       <Router>
         <Switch>
           <Route exact path="/">
@@ -22,6 +29,9 @@ const App = (): JSX.Element => {
           </Route>
           <Route path="/view/:planId?">
             <ViewPlan />
+          </Route>
+          <Route path="/user/:userId/create">
+            <CreatePlan />
           </Route>
           <Route path="*">
             <NotFound />

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
+import { Helmet } from 'react-helmet';
 
 import api from '../lib/api';
 import Header from '../components/Header.js';
@@ -38,6 +39,9 @@ const ViewPlan = (): JSX.Element => {
 
   return (
     <>
+      <Helmet>
+        <title>NutriPlan! {plan?.name ? `- ${plan.name}` : ''}</title>
+      </Helmet>
       <Header />
       <main className="flex-1 bg-green-500 flex flex-col">
         <PlanActions plan={plan} />

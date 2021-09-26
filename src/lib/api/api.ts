@@ -2,12 +2,22 @@
 import type { IPlan } from 'src/types';
 import type { IAPI } from './api.types';
 
-const getActivePlan = (): IPlan => {
-  return {} as IPlan
-}
+const getPlan = async (): Promise<IPlan> => {
+  return {} as IPlan;
+};
+
+const getActivePlan = async (): Promise<IPlan> => {
+  return {} as IPlan;
+};
+
+const getAllPlanNames = async (): Promise<{ id: string; name: string }[]> => {
+  return [];
+};
 
 const api: IAPI = {
-  getActivePlan
-}
+  getPlan,
+  getActivePlan,
+  getAllPlanNames,
+};
 
 export default api;
